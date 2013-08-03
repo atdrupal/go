@@ -34,3 +34,8 @@ Features
   drush godl ckeditor
   drush godl jquery.cycle
   drush godl colorbox
+
+4. Back ported some Components from Drupal 8
+
+  - Uuid
+  - …
