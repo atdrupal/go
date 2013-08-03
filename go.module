@@ -1,6 +1,33 @@
 <?php
 
 /**
+/**
+ * Get modules that implements Go API.
+ *
+ * @return array
+ */
+function go_get_module_apis($reset = FALSE) {
+  if ($reset) {
+    $cache = &drupal_static('ctools_plugin_api_info');
+    if (isset($cache['go'][$api])) {
+      unset($cache['go'][$api]);
+    }
+  }
+
+  ctools_include('plugins');
+  $return = ctools_plugin_api_info('go', $api, '1.0', '1.0');
+
+  return $return;
+}
+
+/**
+ * Implements hook_go_api()
+ */
+function go_go_api() {
+  return array('api' => '1.0');
+}
+
+/**
  * Helper function for quick cache get/set.
  *
  * @code
