@@ -93,3 +93,17 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     return time();
   }
 }
+
+class GoAutoloadTestCase extends DrupalUnitTestCase {
+  public function getInfo() {
+    return array(
+      'name' => 'Go Autoloader',
+      'description' => "Make sure the autoloader feature is working correctly.",
+      'group' => 'Go Module'
+    );
+  }
+
+  public function testAutoloader() {
+    $this->assertTrue(class_exists('Drupal\go\Tests\Foo'));
+  }
+}

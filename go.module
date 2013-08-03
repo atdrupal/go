@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Autloading feature.
+ *
+ * This feature may slow down your Drupal a bit, to disable this function, define
+ * GO_DISABLE_AUTOLOAD in your settings.php
+ *
+ * To make sure your classes are loaded by go autoloader, please implements
+ * hook_go_api().
+ *
+ * @see Issue #24
+ */
+if (!defined('GO_DISABLE_AUTOLOAD')) {
+  require_once dirname(__FILE__) . '/includes/go.autoload.inc';
+}
+
 /**
  * Get modules that implements Go API.
  *
