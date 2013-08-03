@@ -71,6 +71,12 @@ function go_drush_get_supported_libraries() {
         '2.x' => array('url' => 'https://github.com/jackmoore/colorbox/archive/2.x.zip'),
       ),
     ),
+    'mailchimp' => array(
+      'name' => 'Mailchimp PHP library',
+      'versions' => array(
+        'default' => array('url' => 'http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip')
+      )
+    ),
     'jquery.cycle' => array(
       'name' => 'jQuery cycle',
       'versions' => array(
