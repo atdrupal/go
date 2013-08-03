@@ -38,8 +38,9 @@ Features
   drush godl ckeditor
   drush godl jquery.cycle
   drush godl colorbox
+  drush go-hipchat room_id 'Message to be sent…'
 
 4. Back ported some Components from Drupal 8
 
-  - Uuid
-  - …
+  - \Drupal\Component\Uuid
+  - \DRupal\Core\KeyValueStore
