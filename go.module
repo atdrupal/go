@@ -1,12 +1,34 @@
 <?php
 
 /**
- * [go_cache description]
+ * Helper function for quick cache get/set.
+ *
+ * @code
+ *   $nid = $vid = 1;
+ *
+ *   $options['ttl'] = '+ 15 minutes';
+ *   $options['cache_id'] = "node:{$nid}";
+ *   $options['file'] = '/path/to/file.php;
+ *   $options['reset'] = FALSE;
+ *
+ *   // Use case 1:
+ *   $data = go_cache($options, function() use ($nid, $vid) {
+ *     return node_load($nid, $vid);
+ *   });
+ *
+ *   // Use case 2:
+ *   $data = go_cache($options, 'node_load', array($nid, $vid));
+ *
+ * @endcode
+ *
+ * If GODEV constant is defined, go_cache() is by passed rebuild the cache if
+ * $_GET['nocache'] is not empty.
  *
  * @param  [type] $options
  * @param  Closure|string $callback
  * @param  array  $arguments
  * @return mixed
+ * @see GoCacheTestCase
  */
 function go_cache($options, $callback, $arguments = array()) {
   // #####################
