@@ -1,0 +1,6 @@
+name = Go Module
+version = 7.x-1.x
+description = Go Tools
+dependencies[] = ctools
+package = Go1
+core = 7.x
