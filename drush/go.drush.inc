@@ -41,7 +41,7 @@ function go_drush_command() {
  * @see drush_invoke()
  * @see drush.api.php
  */
-function drush_go_download($library = '') {
+function drush_go_download($library = '', $version = 'default') {
   // #####################
   // List the libraries
   // #####################
@@ -63,7 +63,7 @@ function drush_go_download($library = '') {
   // #####################
   // Download the library
   // #####################
-  $library = go_drush_get_supported_library($library, $version = 'default');
+  $library = go_drush_get_supported_library($library, $version);
   $class = DrushMakeProject::getInstance('GoLibrary', $library);
   if (!empty($destination)) {
     $class->contrib_destination = $destination;
@@ -94,6 +94,13 @@ function go_drush_get_supported_libraries() {
       'name' => 'CKEditor',
       'versions' => array(
         'default' => array('url' => 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.zip'),
+      ),
+    ),
+    'colorbox' => array(
+      'name' => 'Colorbox',
+      'versions' => array(
+        'default' => array('url' => 'https://github.com/jackmoore/colorbox/archive/1.x.zip'),
+        '2.x' => array('url' => 'https://github.com/jackmoore/colorbox/archive/2.x.zip'),
       ),
     ),
     'jquery.cycle' => array(
