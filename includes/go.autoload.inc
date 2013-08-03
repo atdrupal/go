@@ -12,7 +12,9 @@ if (!function_exists('go_autoload')) {
    * @return boolean
    */
   function go_autoload($class) {
-    return _go_autoload($class, array('all'));
+    $base_dirs[] = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'lib';
+    $base_dirs[] = 'sites'. DIRECTORY_SEPARATOR .'all'. DIRECTORY_SEPARATOR .'libraries';
+    return _go_autoload($class, $base_dirs);
   }
 }
 
@@ -26,35 +28,48 @@ if (!function_exists('go_autoload')) {
  * - Other cases, please use composer autoloader.
  *
  * @param  string $class
- * @param  array  $sites
- * @return boolean
+ * @param  array  $base_dirs
  */
-function _go_autoload($class, $sites) {
-  // #####################
-  // Validating
-  // #####################
-
+function _go_autoload($class, $base_dirs) {
   // PSR-0 loader, do not support normal class
-  $no_supported = strpos($class, '\\') !== FALSE;
+  $supported = strpos($class, '\\') !== FALSE;
 
   // Only Drupal namespace
-  $no_supported = $no_supported || (strpos($class, 'Drupal\\') === FALSE);
-  if ($no_supported) {
-    return FALSE;
+  $supported = $supported && (strpos($class, 'Drupal\\') === FALSE);
+  if ($supported && $file = go_autoload_get_file($class, $base_dirs)) {
+    require_once $file;
+  }
+}
+
+/**
+ * Get autoloading file.
+ *
+ * @param  string $class
+ */
+function go_autoload_get_file($class, $reset = FALSE) {
+  $file = _go_autoload_get_file($class)
+
+
+  return $file;
   }
 
+/**
+ * Details implementation for go_autoload_get_file. Heart is here.
+ *
+ * @param  string $class
+ * @return mixed
+ */
+function _go_autoload_get_file($class) {
   // #####################
   // Global \Drupal
   // #####################
-
   // Convert \ to DIRECTORY_SEPARATOR
   $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-  $path = DRUPAL_ROOT . "/sites/%s/libraries/{$path}.php";
-  foreach ($sites as $site) {
+  $path = DRUPAL_ROOT . "/%s/{$path}.php";
+  foreach ($base_dirs as $site) {
     $file = sprintf($path, $site);
     if (is_file($file)) {
-      include_once $file;
-      return TRUE;
+      return $file;
     }
   }
 
@@ -67,8 +82,7 @@ function _go_autoload($class, $sites) {
     if (strpos($suffix, "Drupal/{$module}/") !== FALSE) {
       $file = sprintf($path, drupal_get_path('module', $module));
       if (file_exists($file)) {
-        include_once $file;
-        return TRUE;
+        return $file;
       }
     }
   }
