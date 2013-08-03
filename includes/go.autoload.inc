@@ -47,8 +47,22 @@ function _go_autoload($class, $base_dirs) {
  * @param  string $class
  */
 function go_autoload_get_file($class, $reset = FALSE) {
+  $apc = function_exists('apc_store');
+  $cid = "go_autoload:{$class}";
+
+  if ($apc && !$reset) {
+    $file = apc_fetch($cid);
+    if (FALSE !== $file) {
+      return $file;
+    }
+  }
+
   $file = _go_autoload_get_file($class)
 
+  if ($apc) {
+    // apc_fetch return FALSE on failure, that's why we cast FALSE to 0.
+    apc_store($cid, $file ? $file : 0);
+  }
 
   return $file;
   }
