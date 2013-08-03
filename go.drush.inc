@@ -90,6 +90,12 @@ class DrushMakeProject_GoLibrary extends DrushMakeProject_Library {
  */
 function go_drush_get_supported_libraries() {
   return array(
+    'ckeditor' => array(
+      'name' => 'CKEditor',
+      'versions' => array(
+        'default' => array('url' => 'http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.zip'),
+      ),
+    ),
     'jquery.cycle' => array(
       'name' => 'jQuery cycle',
       'versions' => array(
