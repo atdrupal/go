@@ -7,7 +7,7 @@
 
 /**
  * Implements hook_drush_command()
- * @return [type]
+ * @return array
  */
 function go_drush_command() {
   $items['go-download'] = array(
