@@ -58,7 +58,7 @@ function drush_go_download($library = '') {
   // #####################
   // Get params
   // #####################
-  $destination = drush_get_option('destination', 'sites/all');
+  $destination = drush_get_option('destination', 'sites/all/libraries');
 
   // #####################
   // Download the library
