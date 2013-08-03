@@ -21,7 +21,7 @@ Features
       return $data;
     }
 
-  With go_cache(), your logic goes cleaner:
+  With go_cache(), your logic becomes cleaner:
 
     function your_data_provider() {
       return your_logic();
