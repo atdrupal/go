@@ -1,6 +1,10 @@
 Features
 
 1. Autoloader — @see go_autoload()
+
+  - To disable this feature, in settings.php, define GO_DISABLE_AUTOLOAD constant.
+  - Run faster with APC extension enabled.
+
 2. go_cache()
 
   Without go_cache()
