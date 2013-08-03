@@ -3,8 +3,8 @@
 class GoCacheTestCase extends DrupalUnitTestCase {
   public function getInfo() {
     return array(
-      'name' => 'Go module functionality',
-      'description' => "Make sure the go.module is working correctly.",
+      'name' => 'Go Cache',
+      'description' => "Make sure the go_cache() is working correctly.",
       'group' => 'Go Module'
     );
   }
