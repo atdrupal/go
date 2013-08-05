@@ -19,6 +19,11 @@ if (!function_exists('go_autoload')) {
 }
 
 /**
+ * Register auto loader.
+ */
+spl_autoload_register('go_autoload');
+
+/**
  * Simple PSR-0 autoloader.
  *
  * - \Drupal\%module\Class: If the %module is enabled, go will load the file
