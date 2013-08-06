@@ -18,11 +18,11 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     );
 
     // Init the value
-    $time_1 = go_cache($options, function () use () { return time(); });
+    $time_1 = go_cache($options, function () { return time(); });
     sleep(2);
 
     // Call go_cache() again
-    $time_2 = go_cache($options, function () use () { return time(); });
+    $time_2 = go_cache($options, function () { return time(); });
 
     // The value should be same — it's cached.
     $this->assertEqual($time_1, $time_2);
@@ -63,7 +63,7 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     $string_2 = go_cache($options, 'sprintf', array('Timestamp: %d', time()));
 
     // The value should be same — it's cached.
-    $this->assertEqual($string_1, $string_2)
+    $this->assertEqual($string_1, $string_2);
   }
 
   public function testObjectCallback() {

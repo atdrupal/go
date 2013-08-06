@@ -62,7 +62,7 @@ function go_autoload_get_file($class, $reset = FALSE) {
     }
   }
 
-  $file = _go_autoload_get_file($class)
+  $file = _go_autoload_get_file($class);
 
   if ($apc) {
     // apc_fetch return FALSE on failure, that's why we cast FALSE to 0.

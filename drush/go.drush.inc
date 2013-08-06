@@ -7,6 +7,7 @@
 
 require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
+require_once dirname(__FILE__) . '/go.dev.inc';
 
 /**
  * Implements hook_drush_command()
@@ -49,6 +50,29 @@ function go_drush_command() {
     'aliases' => array('godl'),
     // No bootstrap is needed
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+  );
+  
+  $items['go-dev'] = array(
+    'description' => dt('Special drush commands, provided by Go1, execute some dev configurations.'),
+    'options' => array(
+      'devel' => dt('Enable or disable devel module, default = 1'),
+      'page_cache' => dt('Enable or disable page caching, default = 0'),
+      'block_cache' => dt('Enable or disable block caching, default = 0'),
+      'compress_js' => dt('Enable or disable js aggregation, default = 0'),
+      'compress_css' => dt('Enable or disable js aggregation, default = 0'),
+      'update' => dt('Enable or disable update module, default=0'),
+      'views-preview' => dt('Enable or disable "Automatically update preview on changes", default = 0'),
+      'views-sql' => dt('Enable or disable "Show the SQL query", default = 1'),
+      'views-queries' => dt('Enable or disable "Show other queries run during render during live preview", default = 1'),
+      'views-help' => dt('Enable or disable "Show advanced help warning", default = 0'),
+      'views' => dt('Execute "views-preview", "views-sql", "views-queries", "views-help" with default values'),
+    ),
+    'examples' => array(
+      'drush godev --devel' => 'Enable devel module.',
+      'drush godev --devel=0' => 'Disable devel module.',
+    ),
+    'aliases' => array('godev'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
   );
 
   return $items;
