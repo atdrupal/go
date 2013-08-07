@@ -65,7 +65,6 @@ function go_drush_command() {
       'views-sql' => dt('Enable or disable "Show the SQL query", default = 1'),
       'views-queries' => dt('Enable or disable "Show other queries run during render during live preview", default = 1'),
       'views-help' => dt('Enable or disable "Show advanced help warning", default = 0'),
-      'views' => dt('Execute "views-preview", "views-sql", "views-queries", "views-help" with default values'),
     ),
     'examples' => array(
       'drush godev --devel' => 'Enable devel module.',
