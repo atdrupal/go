@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file module go.install
+ */
+/*
+ * Implements hook_install().
+ */
+function go_install() {
+  
+}
+
+/*
+ * Implements hook_install().
+ */
+
+function go_uninstall() {
+  
+}
+
+/**
+ * Implements hook_enable().
+ */
+function go_enable() {
+  if (!defined('GO_GOOGLE_ANALYTICS')) {
+    drupal_set_message(t('GO_GOOGLE_ANALYTICS not defined!'), 'warning');
+  }
+  else {
+    if(validate_google_analytics_id(GO_GOOGLE_ANALYTICS))
+    {
+      drupal_set_message(t('insert google analytics code used id is  ' . GO_GOOGLE_ANALYTICS),'status');
+    }
+  }
+}
