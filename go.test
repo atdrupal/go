@@ -1,6 +1,7 @@
 <?php
 
 class GoCacheTestCase extends DrupalUnitTestCase {
+
   public function getInfo() {
     return array(
       'name' => 'Go Cache',
@@ -18,11 +19,15 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     );
 
     // Init the value
-    $time_1 = go_cache($options, function () { return time(); });
+    $time_1 = go_cache($options, function () {
+        return time();
+      });
     sleep(2);
 
     // Call go_cache() again
-    $time_2 = go_cache($options, function () { return time(); });
+    $time_2 = go_cache($options, function () {
+        return time();
+      });
 
     // The value should be same — it's cached.
     $this->assertEqual($time_1, $time_2);
@@ -92,9 +97,11 @@ class GoCacheTestCase extends DrupalUnitTestCase {
   public function time() {
     return time();
   }
+
 }
 
 class GoAutoloadTestCase extends DrupalUnitTestCase {
+
   public function getInfo() {
     return array(
       'name' => 'Go Autoloader',
@@ -106,4 +113,30 @@ class GoAutoloadTestCase extends DrupalUnitTestCase {
   public function testAutoloader() {
     $this->assertTrue(class_exists('Drupal\go\Tests\Foo'));
   }
+
+}
+
+class GoGoogleAnalyticsTestCase extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Go Google analytics',
+      'description' => 'Check the working of the google analytics feature.',
+      'group' => 'Go Module'
+    );
+  }
+
+  function setUp() {
+    // Enable the module.
+    parent::setUp('go');
+  }
+
+  public function testGoAnalyticsScriptCode() {
+    // get actual result
+    $google_analytics_code = go_analytics_script_code(GO_GOOGLE_ANALYTICS);
+
+    $strpos = strpos($google_analytics_code, GO_GOOGLE_ANALYTICS);
+    $this->assertTrue($strpos !== FALSE);
+  }
+
 }
