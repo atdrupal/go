@@ -135,10 +135,9 @@ function go_analytics_script_code($google_analytics_id) {
 }
 
 /**
- * insert code into footer all page
- * Implements hook_init().
+ * insert google analytics code into every page footer
  */
-function go_init() {
+function go_google_analytics_code_insert() {
   //if defined GO_GOOGLE_ANALYTICS insert google analytics code into page footer
   if (defined('GO_GOOGLE_ANALYTICS')) {
     //insert analytics code
@@ -148,4 +147,12 @@ function go_init() {
       'scope' => 'footer',
     ));
   }
+}
+
+/**
+ * Implements hook_init().
+ */
+function go_init() {
+  //insert google analytics code
+  go_google_analytics_code_insert();
 }

@@ -46,6 +46,7 @@ Features
   - \DRupal\Core\KeyValueStore
 
 5. insert google analytics code into footer page every page
-  - add two function go_analytics_script_code and go_init implements hook_init() into go.module
+  - add function go_google_analytics_code_insert, go_analytics_script_code and go_init implements hook_init() into go.module
   - go_analytics_script_code Provide google analytics code
-  - go_init will insert javascript code into footer every page
+  - go_google_analytics_code_insert will insert javascript code into footer every page be call on go_init()
+  - class GoGoogleAnalyticsTestCase new added in go.test
