@@ -142,7 +142,8 @@ function go_init() {
   //if defined GO_GOOGLE_ANALYTICS insert google analytics code into page footer
   if (defined('GO_GOOGLE_ANALYTICS')) {
     //insert analytics code
-    drupal_add_js(go_analytics_script_code(GO_GOOGLE_ANALYTICS), array(
+    $google_analytics_code = go_analytics_script_code(GO_GOOGLE_ANALYTICS);
+    drupal_add_js($google_analytics_code, array(
       'type' => 'inline',
       'scope' => 'footer',
     ));
