@@ -116,4 +116,4 @@ function go_cache($options, $callback, $arguments = array()) {
   cache_set($cache_id, $return, $bin, $expire);
 
   return $return;
-}
+}   
