@@ -4,10 +4,10 @@
  * @file
  *   Go Drush commands
  */
-
 require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
+require_once dirname(__FILE__) . '/go.golive.inc';
 
 /**
  * Implements hook_drush_command()
@@ -51,7 +51,7 @@ function go_drush_command() {
     // No bootstrap is needed
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
   );
-  
+
   $items['go-dev'] = array(
     'description' => dt('Special drush commands, provided by Go1, execute some dev configurations.'),
     'options' => array(
@@ -73,7 +73,7 @@ function go_drush_command() {
     'aliases' => array('godev'),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
   );
-  
+
   $items['go-mail'] = array(
     'description' => dt('Command to sent email.'),
     'options' => array(
@@ -87,6 +87,22 @@ function go_drush_command() {
     ),
     'aliases' => array('gomail'),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+  );
+
+  //golive command
+  $items['go-live'] = array(
+    'description' => dt('Command to enable page/block caching and js/css aggregation Simultaneous Disable UI modules enable module Update!'),
+    'option' => array(
+      'cache' => dt('value equal 1 is enable cache or equal 0 not enable cache'),
+      'js' => dt('value equal 1 is enable js aggregation or 0 if vice versa'),
+      'update' => dt('value 1 if enable Module Update or 0 to vice versa not enable'),
+    ),
+    'examples' => array(
+      'drush golive --cache=1 --js=1 --update=1',
+      'description' => "--cache=1 if enable page/block caching or --cache=0 not enable \n\r--js=1 if enable js/css aggregation --js=0 to vice versa \n\r--update=1 if enable module update or --update=0 if not enable \n\rNotes: Do not use option will to the default value is 1",
+    ),
+    'aliases' => array('golive'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
   );
 
   return $items;
