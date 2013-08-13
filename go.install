@@ -28,7 +28,7 @@ function go_enable() {
   else {
     if(validate_google_analytics_id(GO_GOOGLE_ANALYTICS))
     {
-      drupal_set_message(t('You need to register on google analytics site before this ID take effect'),'status');
+      drupal_set_message(t('You need to register n google analytics page before this ID take effect'),'status');
       drupal_set_message(t('insert google analytics code used id ' . GO_GOOGLE_ANALYTICS),'status');
     }
   }
