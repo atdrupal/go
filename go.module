@@ -126,32 +126,32 @@ function go_cache($options, $callback, $arguments = array()) {
 }
 
 /**
- * build google analytics code
- * @return string google analytics code
+ * Build google analytics code
+ *
+ * @return string Google Analytics embed code
  */
-function go_analytics_script_code($google_analytics_id) {
-  //get site domain
+function go_get_google_analytics_code($id) {
+  // get domain name
   $domain = $GLOBALS['base_url'];
   $domain = preg_replace('/^(http|https)+:\/\/+/si', '', $domain);
+
   return "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '$google_analytics_id', '$domain');
+  ga('create', '$id', '$domain');
   ga('send', 'pageview');";
 }
 
 /**
- * insert google analytics code into every page footer
+ * Insert google analytics code into every page footer
+ *
+ * @see go_init()
  */
 function go_google_analytics_code_insert() {
-  //if defined GO_GOOGLE_ANALYTICS insert google analytics code into page footer
   if (defined('GO_GOOGLE_ANALYTICS')) {
-    //insert analytics code
-    $google_analytics_code = go_analytics_script_code(GO_GOOGLE_ANALYTICS);
-    drupal_add_js($google_analytics_code, array(
-      'type' => 'inline',
-      'scope' => 'footer',
+    drupal_add_js(go_get_google_analytics_code(GO_GOOGLE_ANALYTICS), array(
+      'type' => 'inline', 'scope' => 'footer',
     ));
   }
 }
