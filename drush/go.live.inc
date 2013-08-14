@@ -136,10 +136,10 @@ function go_disable_ui_module() {
       module_disable($ui_modules_after_checked);
       $disable_ui_modules = implode(', ', $ui_modules_after_checked);
       drush_log(dt('UI modules be disable @modules_ui', array('@modules_ui' => $disable_ui_modules)), "success");
-      return true;
+      return TRUE;
     }
   }
-  return false;
+  return FALSE;
 }
 
 /**
@@ -189,5 +189,5 @@ function go_live_confirm($msg) {
     return drush_confirm($msg);
   }
 
-  return true;
+  return TRUE;
 }
