@@ -104,4 +104,11 @@ function go_disable_ui_module() {
     return implode(', ', $ui_modules_after_checked);
   }
   return false;
-} 
+}
+
+/**
+ * enable module Update and download if module not exists
+ */
+function download_enable_update_module() {
+  
+}
