@@ -39,6 +39,11 @@ function drush_go_live() {
     go_golive_action('disable', 'js_css');
     drush_log(dt('js/css aggregation disabled.'), "success");
   }
+
+  // disable UI modules
+  $disable_ui_modules = go_disable_ui_module();
+  if ($disable_ui_modules !== false)
+    drush_log(dt('UI modules be disable @modules_ui', array('@modules_ui' => $disable_ui_modules)), "success");
 }
 
 /**
@@ -68,3 +73,35 @@ function go_golive_action($action, $type) {
   }
 }
 
+/**
+ * the UI module will disable
+ */
+function go_ui_modules() {
+  return array(
+    'field_ui', 'context_ui', 'migrate_ui', 'feeds_ui', 'og_ui',
+    'boxes_admin_ui', 'rules_admin', 'views_ui', 'context_ui',
+  );
+}
+
+/**
+ * disable ui module have on go_ui_modules
+ * @return string list the module ui be disable
+ */
+function go_disable_ui_module() {
+  //get list ui module to disable
+  $ui_modules = go_ui_modules();
+  $ui_modules_after_checked = array();
+
+  foreach ($ui_modules as $ui_module) {
+    //module exists will disable
+    if (module_exists($ui_module)) {
+      $ui_modules_after_checked[] = $ui_module;
+    }
+  }
+
+  if (count($ui_modules_after_checked) > 0) {
+    module_disable($ui_modules_after_checked);
+    return implode(', ', $ui_modules_after_checked);
+  }
+  return false;
+} 
