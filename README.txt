@@ -59,3 +59,4 @@ Features
   - add new function go_ui_modules() inside drush/go.golive.inc. 
     add list UI module to disable here!
   - function go_disable_ui_module(). be call to in drush_go_live()
+  - go_live_confirm() waiting for user confirmation.

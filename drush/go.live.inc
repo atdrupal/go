@@ -12,12 +12,12 @@ function drush_go_live() {
 
   // print warning if godev be defined in setting.php
   if (defined('GODEV')) {
-    drush_log(dt("dev feature is not recommended when using this command. you need to remove GODEV constant in setting.php. \n"), "warning");
+    drush_log("dev feature is not recommended when using this command. you need to remove GODEV constant in setting.php. \n", "warning");
   }
 
   // validate text input from user
   if ($js_option != 0 && $js_option != 1 || $update_option != 0 && $update_option != 1 || $cache_option != 0 && $cache_option != 1) {
-    drush_set_error(dt('Data input invalid!'));
+    drush_set_error('Data input invalid!');
   }
 
   // enable page caching and block caching if cache option equal 1
@@ -78,11 +78,11 @@ function go_golive_action($action, $type) {
 
       if ($action == 'disable') {
         // print message
-        drush_log(dt('Block/page caching disabled.'), "success");
+        drush_log('Block/page caching disabled.', "success");
       }
       elseif ($action == 'enable') {
         // print message
-        drush_log(dt('Block/page caching enabled.'), "success");
+        drush_log('Block/page caching enabled.', "success");
       }
     }
   }
@@ -95,10 +95,10 @@ function go_golive_action($action, $type) {
 
       if ($action == 'enable') {
         // print message
-        drush_log(dt('Js/css aggregation enabled.'), "success");
+        drush_log('Js/css aggregation enabled.', "success");
       }
       elseif ($action == 'disable') {
-        drush_log(dt('Js/css aggregation disabled.'), "success");
+        drush_log('Js/css aggregation disabled.', "success");
       }
     }
   }
@@ -135,7 +135,7 @@ function go_disable_ui_module() {
     if (count($ui_modules_after_checked) > 0) {
       module_disable($ui_modules_after_checked);
       $disable_ui_modules = implode(', ', $ui_modules_after_checked);
-      drush_log(dt('UI modules be disable @modules_ui', array('@modules_ui' => $disable_ui_modules)), "success");
+      drush_log('UI modules be disable @modules_ui', array('@modules_ui' => $disable_ui_modules), "success");
       return TRUE;
     }
   }
@@ -152,7 +152,7 @@ function go_update_module($action) {
       // enable update module
       if (go_live_confirm('You want to enable update module?')) {
         module_enable(array('update'));
-        drush_log(dt('Module update has been enable success.'), "success");
+        drush_log('Module update has been enable success.', "success");
       }
     }
   }
@@ -161,7 +161,7 @@ function go_update_module($action) {
     if (module_exists('update')) {
       if (go_live_confirm('You want to enable update module?')) {
         module_disable(array('update'));
-        drush_log(dt('Module update has been disable.'), 'success');
+        drush_log('Module update has been disable.', 'success');
       }
     }
   }
