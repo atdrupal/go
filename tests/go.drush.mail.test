@@ -1,0 +1,31 @@
+<?php
+
+class GoMailCommandTestCase extends DrupalUnitTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Test drush gomail command',
+      'description' => 'Test function send mail of drush gomail command.',
+      'group' => 'Go Module',
+    );
+  }
+
+  public function setUp() {
+    parent::setUp('go');
+  }
+
+  public function testGoMailCommand() {
+    module_load_include('inc', 'go') . '/drush/go.mail.inc';
+
+    $msg['subject'] = 'Test from Go1 Staff';
+    $msg['body'] = 'Email send by Simple Test';
+    $from = variable_get('site_mail', ini_get('sendmail_from'));
+    $to = variable_get('site_mail', 'go_simpletest@mailinator.com'));
+
+    // Wrong assert
+    $this->assertTrue(drush_go_mail_send($msg, $from, $to));
+
+    // Check php mail function available
+    $this->assertTrue(function_exists('mail'));
+  }
+
+}

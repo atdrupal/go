@@ -1,7 +1,12 @@
 name = Go Module
 version = 7.x-1.x
 description = Go Tools
-files[] = go.test
+
 dependencies[] = ctools
 package = Go1
 core = 7.x
+
+files[] = tests/go.autoload.test
+files[] = tests/go.cache.test
+files[] = tests/go.drush.mail.test
+files[] = tests/go.google-analytics.test
