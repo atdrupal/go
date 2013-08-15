@@ -9,6 +9,7 @@ require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
 require_once dirname(__FILE__) . '/go.live.inc';
+require_once dirname(__FILE__) . '/go.mail.inc';
 
 /**
  * Implements hook_drush_command()
