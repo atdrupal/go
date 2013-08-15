@@ -70,3 +70,15 @@ Features
   In settings.php configure your Google Analytics code by adding this line:
 
     define('GO_GOOGLE_ANALYTICS', 'UA-****');
+
+6. Simple 403/404 handler:
+
+  - On 403, redirect user to login page.
+  - On 404, redirect user to search page.
+
+  To enable this feature. Just go to your settings.php add these lines:
+
+    define('GO_403', 1);
+    define('GO_404', 1);
+    // or
+    define('GO_404', 'site-content');

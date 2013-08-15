@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @author Thai Nguyen
+ */
+
+/*
+ * Test case for 403/404 handler
+ *
+ * @see go_preprocess_page__handle_40x()
+ */
+class GoPreprocessPageHandle404 extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Go Handle 404',
+      'description' => "Make sure the 404 autoredirect feature is working correctly.",
+      'group' => 'Go Module'
+    );
+  }
+
+  public function setUp() {
+    // Enable any modules required for the test.
+    parent::setUp(array('go'));
+
+    // Create and log in our privileged user.
+    $this->privileged_user = $this->drupalCreateUser(array(
+      'search content',
+      'use advanced search',
+    ));
+    $this->drupalLogin($this->privileged_user);
+  }
+
+  /**
+   * Test error 403 redirect to login page
+   */
+  public function testGoPreprocessPageHandle404() {
+    $this->drupalGet('i--am--404');
+    $this->assertText(t('Search'), 'In search page with correct key.');
+  }
+}
