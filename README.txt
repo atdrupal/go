@@ -49,12 +49,8 @@ Features
 
   In settings.php configure your Google Analytics code by adding this line:
 
-  define('GO_GOOGLE_ANALYTICS', 'UA-****');
+  Define('GO_GOOGLE_ANALYTICS', 'UA-****');
 
-6. created new golive command
-  - created new fifle go.golive.inc
-  - add new element go-live inside drush/go.drush.inc
-  - add new function go_ui_modules() inside drush/go.golive.inc. 
-    add list UI module to disable here!
-  - function go_disable_ui_module(). be call to in drush_go_live()
-  - go_live_confirm() waiting for user confirmation.
+6. Created new golive command
+   Used command: drush golive --cache=1 --js=1 --update=1
+   Please run command drush golive --help for help

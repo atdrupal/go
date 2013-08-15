@@ -114,7 +114,7 @@ function go_drush_command() {
  * 
  * @param string $msg message will print
  */
-function go_live_confirm($msg) {
+function go_drush_confirm($msg) {
   $y_option = drush_get_option('y');
   if ($y_option != 1) {
     return drush_confirm($msg);
