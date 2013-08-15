@@ -1,6 +1,6 @@
 <?php
 
-class GoCacheTestCase extends DrupalUnitTestCase {
+class GoCacheTestCase extends GoWebTestCase {
 
   public function getInfo() {
     return array(
@@ -25,7 +25,7 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     sleep(2);
 
     // Call go_cache() again
-    $time_2 = go_cache($options, function () {
+    $time_2 = go_cache(array('reset' => FALSE) + $options, function () {
         return time();
       });
 
@@ -46,7 +46,7 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     sleep(2);
 
     // Call go_cache() again
-    $time_2 = go_cache($options, 'time');
+    $time_2 = go_cache(array('reset' => FALSE) + $options, 'time');
 
     // The value should be same — it's cached.
     $this->assertEqual($time_1, $time_2);
@@ -65,7 +65,7 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     sleep(2);
 
     // Call go_cache() again
-    $string_2 = go_cache($options, 'sprintf', array('Timestamp: %d', time()));
+    $string_2 = go_cache(array('reset' => FALSE) + $options, 'sprintf', array('Timestamp: %d', time()));
 
     // The value should be same — it's cached.
     $this->assertEqual($string_1, $string_2);
@@ -84,7 +84,7 @@ class GoCacheTestCase extends DrupalUnitTestCase {
     sleep(2);
 
     // Call go_cache() again
-    $time_2 = go_cache($options, 'GoCacheTestCase::time');
+    $time_2 = go_cache(array('reset' => FALSE) + $options, 'GoCacheTestCase::time');
 
     // The value should be same — it's cached.
     $this->assertEqual($time_1, $time_2);
