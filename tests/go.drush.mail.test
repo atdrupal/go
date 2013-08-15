@@ -19,7 +19,7 @@ class GoMailCommandTestCase extends DrupalUnitTestCase {
     $msg['subject'] = 'Test from Go1 Staff';
     $msg['body'] = 'Email send by Simple Test';
     $from = variable_get('site_mail', ini_get('sendmail_from'));
-    $to = variable_get('site_mail', 'go_simpletest@mailinator.com'));
+    $to = variable_get('site_mail', 'go_simpletest@mailinator.com');
 
     // Wrong assert
     $this->assertTrue(drush_go_mail_send($msg, $from, $to));
