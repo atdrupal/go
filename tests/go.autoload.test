@@ -1,6 +1,6 @@
 <?php
 
-class GoAutoloadTestCase extends DrupalUnitTestCase {
+class GoAutoloadTestCase extends GoUnitTestCase {
 
   public function getInfo() {
     return array(
