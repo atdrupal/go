@@ -113,12 +113,16 @@ function go_drush_command() {
 
   $items['go-require'] = array(
     'description' => dt('Go download require resource'),
-    'options' => array(),
+    'options' => array(
+      'file' => dt('required resource, default is .gorequire')
+    ),
     'examples' => array(
       'drush go-require' => dt('Download all missing resource from .gorequire file'),
+      'drush go-require --file=.gorequire2' => dt('Download all missing resource from .gorequire2 file'),
     ),
     'aliases' => array('gorequire'),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+    'engines' => array('release_info'),
   );
 
   return $items;
