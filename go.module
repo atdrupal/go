@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * @file ./go.module
+ *
+ * @author     Andy Truong
+ * @author     Quyen Bui
+ */
+
+/**
  * Autloading feature.
  *
  * This feature may slow down your Drupal a bit, to disable this function, define

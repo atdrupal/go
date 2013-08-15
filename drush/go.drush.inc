@@ -4,13 +4,15 @@
  * @file
  *   Go Drush commands
  */
+
 require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
-require_once dirname(__FILE__) . '/go.golive.inc';
+require_once dirname(__FILE__) . '/go.live.inc';
 
 /**
  * Implements hook_drush_command()
+ *
  * @return array
  */
 function go_drush_command() {
@@ -89,7 +91,6 @@ function go_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
   );
 
-  //golive command
   $items['go-live'] = array(
     'description' => dt('Command to enable page/block caching and js/css aggregation Simultaneous Disable UI modules enable module Update!'),
     'option' => array(

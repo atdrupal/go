@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file ./drush/go.download.inc
+ *
+ * @author Andy Truong
+ */
+
+/**
  * Callback function to download the libraries for your Drupal.
  *
  * @param  string $library

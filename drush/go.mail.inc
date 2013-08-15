@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file ./drush/go.mail.inc
+ *
+ * @author Cham Pham
+ */
+
+/**
  * Command to sent mail.
  *
  * @TODO Need Test
