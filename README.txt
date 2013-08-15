@@ -43,8 +43,10 @@ Features
 4. Back ported some Components from Drupal 8
 
   - \Drupal\Component\Uuid
-  - \DRupal\Core\KeyValueStore
+  - \Drupal\Core\KeyValueStore
+
 5. Simple Google Analytics integration
+
   In settings.php configure your Google Analytics code by adding this line:
 
     define('GO_GOOGLE_ANALYTICS', 'UA-****');
