@@ -18,7 +18,7 @@ if (!function_exists('go_autoload')) {
    * @return boolean
    */
   function go_autoload($class) {
-    $base_dirs[] = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'lib';
+    $base_dirs[] = trim(substr(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'lib', strlen(DRUPAL_ROOT)), '/');
     $base_dirs[] = 'sites'. DIRECTORY_SEPARATOR .'all'. DIRECTORY_SEPARATOR .'libraries';
     return _go_autoload($class, $base_dirs);
   }
@@ -46,7 +46,8 @@ function _go_autoload($class, $base_dirs) {
   $supported = strpos($class, '\\') !== FALSE;
 
   // Only Drupal namespace
-  $supported = $supported && (strpos($class, 'Drupal\\') === FALSE);
+  $supported = $supported && (strpos($class, 'Drupal\\') !== FALSE);
+
   if ($supported && $file = go_autoload_get_file($class, $base_dirs)) {
     require_once $file;
   }
@@ -57,7 +58,7 @@ function _go_autoload($class, $base_dirs) {
  *
  * @param  string $class
  */
-function go_autoload_get_file($class, $reset = FALSE) {
+function go_autoload_get_file($class, $base_dirs, $reset = FALSE) {
   $apc = function_exists('apc_store');
   $cid = "go_autoload:{$class}";
 
@@ -68,7 +69,7 @@ function go_autoload_get_file($class, $reset = FALSE) {
     }
   }
 
-  $file = _go_autoload_get_file($class);
+  $file = _go_autoload_get_file($class, $base_dirs);
 
   if ($apc) {
     // apc_fetch return FALSE on failure, that's why we cast FALSE to 0.
@@ -76,7 +77,7 @@ function go_autoload_get_file($class, $reset = FALSE) {
   }
 
   return $file;
-  }
+}
 
 /**
  * Details implementation for go_autoload_get_file. Heart is here.
@@ -84,15 +85,17 @@ function go_autoload_get_file($class, $reset = FALSE) {
  * @param  string $class
  * @return mixed
  */
-function _go_autoload_get_file($class) {
+function _go_autoload_get_file($class, $base_dirs) {
   // #####################
   // Global \Drupal
   // #####################
   // Convert \ to DIRECTORY_SEPARATOR
   $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
   $path = DRUPAL_ROOT . "/%s/{$path}.php";
+
   foreach ($base_dirs as $site) {
     $file = sprintf($path, $site);
+    print_r(array($path, $site, $file));
     if (is_file($file)) {
       return $file;
     }
