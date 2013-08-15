@@ -1,6 +1,6 @@
 <?php
 
-class GoGoogleAnalyticsTestCase extends DrupalWebTestCase {
+class GoGoogleAnalyticsTestCase extends GoWebTestCase {
 
   public static function getInfo() {
     return array(
@@ -10,23 +10,18 @@ class GoGoogleAnalyticsTestCase extends DrupalWebTestCase {
     );
   }
 
-  function setUp() {
-    // Enable the module.
-    parent::setUp('go');
-
+  public function testGoGoogleAnalyticsCodeInsert() {
     // define GO_GOOGLE_ANALYTICS if GO_GOOGLE_ANALYTICS is not defined
     if (!defined('GO_GOOGLE_ANALYTICS')) {
       define('GO_GOOGLE_ANALYTICS', 'GA_KEY');
     }
-  }
 
-  public function testGoGoogleAnalyticsCodeInsert() {
     // go to home page
     $this->drupalGet($GLOBALS['base_url']);
     // get home page content
     $home_page_html = $this->drupalGetContent();
     // get ga code
-    $google_analytics_code = go_analytics_script_code(GO_GOOGLE_ANALYTICS);
+    $google_analytics_code = go_get_google_analytics_code(GO_GOOGLE_ANALYTICS);
     $strpos = strpos($home_page_html, $google_analytics_code);
     // we expect that ga code inserted to home page
     $this->assertTrue($strpos !== FALSE);
