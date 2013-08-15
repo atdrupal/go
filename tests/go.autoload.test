@@ -14,4 +14,8 @@ class GoAutoloadTestCase extends GoUnitTestCase {
     $this->assertTrue(class_exists('Drupal\go\Tests\Foo'));
   }
 
+  public function testCoreKeyValue() {
+    $this->assertTrue(class_exists('Drupal\Core\KeyValueStore\KeyValueDatabaseFactory'));
+  }
+
 }
