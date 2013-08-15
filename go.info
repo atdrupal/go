@@ -10,3 +10,4 @@ files[] = tests/go.autoload.test
 files[] = tests/go.cache.test
 files[] = tests/go.drush.mail.test
 files[] = tests/go.google-analytics.test
+files[] = tests/go.40x.test
