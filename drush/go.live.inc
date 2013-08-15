@@ -1,7 +1,9 @@
 <?php
 
-/*
- * Command golive
+/**
+ * @file ./drush/go.live.inc
+ *
+ * @author Quyen Bui
  */
 
 function drush_go_live() {

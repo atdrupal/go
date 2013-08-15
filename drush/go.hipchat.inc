@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file ./drush/go.hipchat.inc
+ *
+ * @author Andy Truong
+ */
+
+/**
  * Callback function to send a message to Hipchat room.
  *
  * @param  string $room_id
@@ -63,4 +69,3 @@ function go_drush_hipchat_format_message($msg) {
   $msg = _filter_autop($msg);
   return $msg;
 }
-

@@ -43,15 +43,13 @@ Features
 4. Back ported some Components from Drupal 8
 
   - \Drupal\Component\Uuid
-  - \DRupal\Core\KeyValueStore
+  - \Drupal\Core\KeyValueStore
 
-5. Insert google analytics code into footer page every page
-  - add function go_google_analytics_code_insert, go_analytics_script_code and 
-    go_init implements hook_init() into go.module
-  - go_analytics_script_code Provide google analytics code
-  - go_google_analytics_code_insert will insert javascript code into footer 
-    every page be call on go_init()
-  - class GoGoogleAnalyticsTestCase new added in go.test
+5. Simple Google Analytics integration
+
+  In settings.php configure your Google Analytics code by adding this line:
+
+  define('GO_GOOGLE_ANALYTICS', 'UA-****');
 
 6. created new golive command
   - created new fifle go.golive.inc

@@ -129,8 +129,7 @@ class GoGoogleAnalyticsTestCase extends DrupalWebTestCase {
   function setUp() {
     // Enable the module.
     parent::setUp('go');
-
-    // define GO_GOOGLE_ANALYTICS if GO_GOOGLE_ANALYTICS is not defined
+    
     if (!defined('GO_GOOGLE_ANALYTICS')) {
       define('GO_GOOGLE_ANALYTICS', 'GA_KEY');
     }

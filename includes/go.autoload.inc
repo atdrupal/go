@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file ./includes/go.autload.inc
+ *
+ * @author Andy Truong
+ */
+
+/**
  * You can tell go.module to find your directory by define go_autoload() in your
  * settings.php
  */
