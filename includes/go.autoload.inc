@@ -95,7 +95,6 @@ function _go_autoload_get_file($class, $base_dirs) {
 
   foreach ($base_dirs as $site) {
     $file = sprintf($path, $site);
-    print_r(array($path, $site, $file));
     if (is_file($file)) {
       return $file;
     }
