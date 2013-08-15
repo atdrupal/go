@@ -26,8 +26,8 @@ function drush_go_require() {
     $make_project_callback = 'drush_make_projects';
     $make_libraries_callback = 'drush_make_libraries';
   }
-  if ($make_project_callback(FALSE, './', $info, $build_path)) {
-    $make_libraries_callback('./', $info, $build_path);
+  if ($make_project_callback(FALSE, '', $info, $build_path )) {
+    $make_libraries_callback('', $info, $build_path);
   }
   return $info;
 }
@@ -39,10 +39,13 @@ function drush_go_require() {
 function drush_go_post_go_require() {
   $build_path = drush_get_context(DRUSH_OLDCWD);
   $make_move_build_callback = 'make_move_build';
+  $make_clean_tmp_callback = 'make_clean_tmp';
   if (version_compare(DRUSH_MAJOR_VERSION, 5) < 0) {
     $make_move_build_callback = 'drush_make_move_build';
+    $make_clean_tmp_callback = 'drush_make_clean_tmp';
   }
   $make_move_build_callback($build_path);
+  $make_clean_tmp_callback();
 }
 
 // Class to parse info file
