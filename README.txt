@@ -49,7 +49,7 @@ Features
 
   In settings.php configure your Google Analytics code by adding this line:
 
-  Define('GO_GOOGLE_ANALYTICS', 'UA-****');
+  define('GO_GOOGLE_ANALYTICS', 'UA-****');
 
 6. Created new golive command
    Used command: drush golive --cache=1 --js=1 --update=1
