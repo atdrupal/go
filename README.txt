@@ -36,9 +36,29 @@ Features
 3. Useful drush commands:
 
   drush godl ckeditor
+
+    …
+
   drush godl jquery.cycle
+
+    …
+
   drush godl colorbox
+
+    …
+
   drush go-hipchat room_id 'Message to be sent…'
+
+    …
+
+  drush golive --cache=1 --js=1 --update=1
+
+    This is wrapper command for useful auto configuration for live site:
+      - Enable page/block caching
+      - Enable js/css aggregation
+      - Disable UI modules (context, views, rules, …)
+      - Enable update.module
+      - drush help golive for more informations.
 
 4. Back ported some Components from Drupal 8
 
