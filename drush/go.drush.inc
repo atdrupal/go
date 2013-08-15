@@ -26,7 +26,7 @@ function go_drush_command() {
       'from' => 'Sender name, default: Go Module',
       'token' => 'API Token, default: value of GO_HIPCHAT_API_TOKEN constant',
       'color' => 'Background color for the message (yellow, red, green, purple or random - default: yellow)',
-      'nofity' => 'Trigger notification for people in the room, default: 0',
+      'notify' => 'Trigger notification for people in the room, default: 0',
     ),
     'aliases' => array('gohc'),
     'examples' => array(
