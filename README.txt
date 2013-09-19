@@ -60,6 +60,14 @@ Features
       - Enable update.module
       - drush help golive for more informations.
 
+  Send e-mail:
+
+    $ drush gomail \
+        --body="message content" \
+        --subject="Subject for this mail" \
+        --to="to@mail.com" \
+        --from="mailfrom@mail.com"
+
 4. Back ported some Components from Drupal 8
 
   - \Drupal\Component\Uuid

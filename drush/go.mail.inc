@@ -11,8 +11,6 @@
 
 /**
  * Command to send mail.
- *
- * @TODO Need Test
  */
 function drush_go_mail() {
   // Get option  from user
