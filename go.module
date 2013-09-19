@@ -6,6 +6,16 @@
  * @author Andy Truong
  * @author Quyen Bui
  * @author Thai Nguyen
+ * @author Nguyen Tran
+ *
+ * Authors:
+ *
+ *   - Auto loader: Andy Truong
+ *   - go_cache(): Andy Truong
+ *   - Better formats: Nguyen Tran, Andy Truong
+ *   - Google Analytics: Quyen, Andy Truong
+ *   - 403/404 handler: Thai Nguyen
+ *
  */
 
 /**
