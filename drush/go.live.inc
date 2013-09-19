@@ -55,13 +55,12 @@ function go_live_context_callback($value_option, $function_name_callback) {
 
 /**
  * Enable or disable page/block cache if $action is enable then enable and vice versa
- * 
+ *
  * @param string $action type of action only receive two values enable or disable
  * @return
  */
 function go_live_cache($action) {
-  if (go_drush_confirm('You want to enable block/page caching?')) {
-
+  if (drush_confirm('You want to enable block/page caching?')) {
     // If action enable config vaule equal 0 and vice versa 1
     $value_config = $action == 'enable' ? 1 : 0;
 
@@ -87,7 +86,7 @@ function go_live_cache($action) {
 
 /**
  * Enable or disable Js/css aggregation depend on $active vaule
- * 
+ *
  * @param String $action value is enable if you want to enable or vice versa
  * @return
  */
@@ -95,7 +94,7 @@ function go_live_js_css($action) {
   // If action enable config vaule equal 0 and vice versa 1
   $value_config = $action == 'enable' ? 1 : 0;
 
-  if (go_drush_confirm('You want to enable js/css aggregation?')) {
+  if (drush_confirm('You want to enable js/css aggregation?')) {
     // Enable aggregation css
     variable_set('preprocess_css', $value_config);
     // Enable aggragation js
@@ -114,7 +113,7 @@ function go_live_js_css($action) {
 /**
  * The UI module will disable
  * Add UI module to be disable here
- * 
+ *
  * @return array
  */
 function go_live_ui_modules_list() {
@@ -126,11 +125,11 @@ function go_live_ui_modules_list() {
 
 /**
  * Disable ui module have on go_ui_modules
- * 
+ *
  * @return boolean
  */
 function go_live_disable_ui_module() {
-  if (go_drush_confirm('You want to disable all UI module?')) {
+  if (drush_confirm('You want to disable all UI module?')) {
     // Get list ui module to disable
     $ui_modules = go_live_ui_modules_list();
     $ui_modules_after_checked = array();
@@ -155,13 +154,13 @@ function go_live_disable_ui_module() {
 
 /**
  * Enable Update module
- * 
+ *
  * @param string $action enable or disable
  */
 function go_live_toggle_update_module($action) {
   if ($action == 'enable') {
     if (!module_exists('update')) {
-      if (go_drush_confirm('You want to enable update module?')) {
+      if (drush_confirm('You want to enable update module?')) {
         // Enable update module
         module_enable(array('update'));
         drush_log('Module update has been enable success.', "success");
@@ -170,7 +169,7 @@ function go_live_toggle_update_module($action) {
   }
   elseif ($action == 'disable') {
     if (module_exists('update')) {
-      if (go_drush_confirm('You want to enable update module?')) {
+      if (drush_confirm('You want to enable update module?')) {
         // Disable module update
         module_disable(array('update'));
         drush_log('Module update has been disable.', 'success');
@@ -184,7 +183,7 @@ function go_live_toggle_update_module($action) {
  */
 function go_live_disable_environment_indicator_module() {
   if (module_exists('environment_indicator')) {
-    if (go_drush_confirm('You want to disable environment_indicator module?')) {
+    if (drush_confirm('You want to disable environment_indicator module?')) {
       // Disable module environment_indicator
       module_disable(array('environment_indicator'));
     }
