@@ -82,3 +82,9 @@ Features
     define('GO_404', 1);
     // or
     define('GO_404', 'site-content');
+
+No more needed modules:
+
+  - login_redirect
+  - google_analytics
+  - …
