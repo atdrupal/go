@@ -83,6 +83,11 @@ Features
     // or
     define('GO_404', 'site-content');
 
+7. Created new golive command
+
+   Used command: drush golive --cache=1 --js=1 --update=1
+   Please run command drush golive --help for help
+
 No more needed modules:
 
   - login_redirect
