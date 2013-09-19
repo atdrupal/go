@@ -124,3 +124,13 @@ Comming features:
   - hipchat action for Rules.module
   - drush go-require — Similar to drush make but it just downloads the missing
     dependencies, no make the full Drupal code base.
+  - Backport KeyValue classes of Drupal 8.
+  - Integrate http://phpdebugbar.com/
+  - Better Cache Flushing - It's readlly hard to flush cache on high Drupal traffic
+    websites, this feature provide something new…
+  - go_content_group() — which solve this issue:
+    — Quicktabs module provide API to render contents as tabs. It does not
+      support render div/accordion/fieldset/slideshow/…
+    - Field Group module can render contents in to groups in div/accordion/
+      fieldset/slideshow/… but it is tied to Form, no API for us to render the
+      normal content.
