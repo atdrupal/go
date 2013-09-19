@@ -1,17 +1,10 @@
 <?php
 
 /**
- * Define constant to enable godev command.
- * Define in settings.php
- * Temporary define in here for dev step
- */
-define('GODEV', '1');
-
-/**
  * Command to enable dev environment.
  */
 function drush_go_dev() {
-  // This command is runnable if GODEV constant is defined in settings.php 
+  // This command is runnable if GODEV constant is defined in settings.php
   if (defined('GODEV') && GODEV) {
     $options = array(
       'devel' => array(
@@ -96,7 +89,7 @@ function drush_go_dev() {
 
 /**
  * Apply setting for module
- * 
+ *
  * @param type $option
  * @param type $option_value
  */
@@ -115,7 +108,7 @@ function drush_go_dev_set_module($option, $option_value) {
 
 /**
  * Apply setting for variable
- * 
+ *
  * @param type $option
  * @param type $option_value
  */
