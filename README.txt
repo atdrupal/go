@@ -114,3 +114,13 @@ No more needed modules:
   - login_redirect
   - google_analytics
   - better format
+
+Comming features:
+
+  - Simple spam protection, similar to hidden captcha, but more powerful.
+  - lazy_routing, in Drupal you have to define menu_item for each route, this
+    comming feature will help you to do routing in Drupal just faster.
+  - node_edit_protection — A void user to exit editing node by accident.
+  - hipchat action for Rules.module
+  - drush go-require — Similar to drush make but it just downloads the missing
+    dependencies, no make the full Drupal code base.
