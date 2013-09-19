@@ -93,9 +93,10 @@ function go_drush_command() {
   $items['go-live'] = array(
     'description' => dt('Command to enable page/block caching and js/css aggregation Simultaneous Disable UI modules enable module Update!'),
     'option' => array(
-      'cache' => dt('value equal 1 is enable cache or equal 0 not enable cache'),
-      'js' => dt('value equal 1 is enable js aggregation or 0 if vice versa'),
-      'update' => dt('value 1 if enable Module Update or 0 to vice versa not enable'),
+      'cache'  => '0 to disable site caching. Default: 1',
+      'js'     => '0 to disable JS aggregation. Default: 1',
+      'css'    => '0 to disable CSS aggregation. Default: 1',
+      'update' => '0 to disable update.module. Default: 1',
     ),
     'examples' => array(
       'drush golive --cache=1 --js=1 --update=1',
