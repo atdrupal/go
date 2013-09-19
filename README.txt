@@ -105,6 +105,10 @@ Features
 
     define('GO_SKIP_NODE_TO_FRONT', 1);
 
+9. Better format similar feature in simple implementation.
+
+  Read sample configure in go.config.sample.php
+
 No more needed modules:
 
   - login_redirect
