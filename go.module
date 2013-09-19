@@ -28,6 +28,7 @@ if (!defined('GO_DISABLE_AUTOLOAD')) {
  */
 function go_init() {
   go_google_analytics_code_insert();
+  go_node_to_frontpage();
 }
 
 /**
@@ -195,5 +196,18 @@ function go_preprocess_page__handle_40x() {
     $path = is_numeric(GO_404) ? 'search/node/' : GO_404;
     $path = "{$path}/{$keyword}";
     drupal_goto($path);
+  }
+}
+
+/**
+ * Redirect /node to front page if no GO_SKIP_NODE_TO_FRONT defined.
+ */
+function go_node_to_frontpage() {
+  if (!defined(GO_SKIP_NODE_TO_FRONT)) {
+    if (preg_match('`^node/*$`si', $_GET['q'])) {
+      if ('node' !== variable_get('site_frontpage', 'node')) {
+        drupal_goto('<front>');
+      }
+    }
   }
 }

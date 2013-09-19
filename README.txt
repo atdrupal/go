@@ -96,6 +96,15 @@ Features
    Used command: drush golive --cache=1 --js=1 --update=1
    Please run command drush golive --help for help
 
+8. /node => /<front>
+
+  Drupal site usually does not have designed for /node page, this look ugly.
+  Instead render this unwanted page, go.module redirect user to front page.
+
+  To disable this feature, in your settings.php, add this line:
+
+    define('GO_SKIP_NODE_TO_FRONT', 1);
+
 No more needed modules:
 
   - login_redirect
