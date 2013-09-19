@@ -113,4 +113,4 @@ No more needed modules:
 
   - login_redirect
   - google_analytics
-  - …
+  - better format
