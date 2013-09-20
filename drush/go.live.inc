@@ -15,6 +15,7 @@ function drush_go_live() {
 
   $js_option      = (int)(drush_get_option('js',      1));
   $css_option     = (int)(drush_get_option('css',     1));
+  $devel_option   = (int)(drush_get_option('devel',   0));
   $update_option  = (int)(drush_get_option('update',  1));
   $cache_option   = (int)(drush_get_option('cache',   1));
 
@@ -24,6 +25,7 @@ function drush_go_live() {
 
   _drush_invoke_hooks('pm-disable', go_live_ui_modules_list());
   _drush_invoke_hooks($update_option ? 'pm-enable' : 'pm-disable', array('update'));
+  _drush_invoke_hooks($devel_option ? 'pm-enable' : 'pm-disable', array('devel'));
 }
 
 /**

@@ -98,6 +98,7 @@ function go_drush_command() {
       'cache'  => '0 to disable site caching. Default: 1',
       'js'     => '0 to disable JS aggregation. Default: 1',
       'css'    => '0 to disable CSS aggregation. Default: 1',
+      'dev'    => '1 to enable devel module. Default: 0',
       'update' => '0 to disable update.module. Default: 1',
     ),
     'examples' => array(
