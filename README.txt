@@ -36,21 +36,13 @@ Features
 3. Useful drush commands:
 
   drush godl ckeditor
-
-    …
-
   drush godl jquery.cycle
-
-    …
-
   drush godl colorbox
-
-    …
-
+  drush godl maxmind.geolite.country
+  drush godl maxmind.geolite.country ipv6
+  drush godl maxmind.geolite.city
+  drush godl maxmind.geolite.city ipv6
   drush go-hipchat room_id 'Message to be sent…'
-
-    …
-
   drush golive --cache=1 --js=1 --update=1
 
     This is wrapper command for useful auto configuration for live site:

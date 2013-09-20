@@ -95,6 +95,20 @@ function go_drush_get_supported_libraries() {
         'lite' => array('url' => 'http://malsup.github.io/jquery.cycle.lite.js')
       ),
     ),
+    'maxmind.geolite.country' => array(
+      'name' => 'Maxmind GeoLite Country',
+      'versions' => array(
+        'default' => 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz',
+        'ipv6' => 'http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz',
+      ),
+    ),
+    'maxmind.geolite.city' => array(
+      'name' => 'Maxmind GeoLite City',
+      'versions' => array(
+        'default' => 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz',
+        'ipv6' => 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz',
+      ),
+    ),
   );
 }
 
