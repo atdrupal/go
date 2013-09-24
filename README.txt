@@ -35,6 +35,7 @@ Features
 
 3. Useful drush commands:
 
+  # Download libraries
   drush godl ckeditor
   drush godl jquery.cycle
   drush godl colorbox
@@ -42,7 +43,6 @@ Features
   drush godl maxmind.geolite.country ipv6
   drush godl maxmind.geolite.city
   drush godl maxmind.geolite.city ipv6
-  drush go-hipchat room_id 'Message to be sent…'
   drush golive --cache=1 --js=1 --update=1
 
     This is wrapper command for useful auto configuration for live site:
@@ -51,6 +51,10 @@ Features
       - Disable UI modules (context, views, rules, …)
       - Enable update.module
       - drush help golive for more informations.
+
+  Send message to Hipchat room:
+
+    $ drush go-hipchat room_id 'Message to be sent…'
 
   Send e-mail:
 
