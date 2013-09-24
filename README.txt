@@ -43,6 +43,10 @@ Features
   drush godl maxmind.geolite.country ipv6
   drush godl maxmind.geolite.city
   drush godl maxmind.geolite.city ipv6
+
+  drush godev
+    Shortcut for quick dev enviroments.
+
   drush golive --cache=1 --js=1 --update=1
 
     This is wrapper command for useful auto configuration for live site:
