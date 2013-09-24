@@ -5,6 +5,10 @@
  *
  * @author Quyen Bui
  */
+
+/**
+ * Drush callback function.
+ */
 function drush_go_live() {
   // Print warning if godev be defined in setting.php
   if (defined('GODEV')) {
