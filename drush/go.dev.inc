@@ -16,7 +16,6 @@ function drush_go_dev() {
   }
 
   $modules['devel'] = 1;
-  $modules['environment_indicator'] = 1;
   $modules['update'] = 0;
 
   $config['page_cache'] = 0;
@@ -30,11 +29,37 @@ function drush_go_dev() {
 
   foreach ($modules as $module => $default_value) {
     $value = drush_get_option($module, $default_value);
-    _drush_invoke_hooks($value ? 'pm-enable' : 'pm-disable', array($module));
+    $command = $value ? 'pm-enable' : 'pm-disable';
+    _drush_invoke_hooks($command, array($module));
   }
 
   foreach ($config as $config_entry => $default_value) {
     $value = drush_get_option($config_entry, $default_value);
     variable_set($config_entry, $value);
   }
+
+  drush_go_dev__environment_indicator();
+}
+
+function drush_go_dev__environment_indicator() {
+  $value = drush_get_option('environment_indicator', 1);
+  $command = $value ? 'pm-enable' : 'pm-disable';
+
+  if ($command === 'pm-enable') {
+    if (!module_exists($module)) {
+      $commands = drush_get_commands();
+      $cmd = $commands['pm-download'];
+      $cmd['arguments'] = array('environment_indicator-7.x-1.1');
+      drush_dispatch($cmd, array('environment_indicator-7.x-1.1'));
+    }
+
+    variable_set('environment_indicator_text', 'DEVELOPMENT ENVIRONMENT');
+    variable_set('environment_indicator_position', 'left');
+  }
+  else {
+    variable_del('environment_indicator_text');
+    variable_del('environment_indicator_position');
+  }
+
+  _drush_invoke_hooks($command, array('environment_indicator'));
 }
