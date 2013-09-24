@@ -30,6 +30,29 @@ define('GO_404', 'search/content');
 define('GO_SKIP_NODE_TO_FRONT', 1);
 
 // #####################
+// Disable mail sending
+//
+// @see drupal_mail()
+// @see drupal_mail_system()
+// #####################
+// Disable all of mail sending…
+$conf['mail_system']['default-system'] = 'Go\MailSystem\Disable';
+
+// To forward email sending
+$conf['go_mail_fwd_to']['default-system'] = 'godebug@mailinator.com';
+$conf['mail_system']['default-system'] = 'Go\MailSystem\Foward';
+
+// To forward email to Hipchat room
+$conf['go_mail_fwd_to_hipchat']['default-system'] = 'RoomName';
+$conf['mail_system']['default-system'] = 'Go\MailSystem\Foward';
+
+// Configure for specific mail sending of your Drupal system
+// Replace 'default-system' with $module . '_' . $key
+// With $module and $key are same to drupal_mail($module, $key, …)
+$conf['go_mail_fwd_to_hipchat'][$module . '_' . $key] = 'RoomName';
+$conf['mail_system'][$module . '_' . $key] = 'Go\MailSystem\Foward';
+
+// #####################
 // Select default format for formatted text fields.
 //
 // 0, 1, 2 is ID of user role.
