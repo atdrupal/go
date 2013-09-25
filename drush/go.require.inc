@@ -3,22 +3,29 @@
 function drush_go_require() {
   // // Using native drush make function, require drush 5
   // if (version_compare(DRUSH_MAJOR_VERSION, 5) < 0) {
-  //   return drush_set_error('DRUSH_REQUIREMENTS_ERROR', dt('Your drush version is too old. go-require requires at least drush !version.', array('!version' => 5)));
+  //   $msg = dt('Your drush version is too old. go-require requires at least drush !version.', array('!version' => 5));
+  //   return drush_set_error('DRUSH_REQUIREMENTS_ERROR', $msg);
   // }
+
   // Parse info file
   // Get option file
   $make_file = drush_get_option('file', '.gorequire');
   $gitignore = '.gitignore'; // @TODO, add to option
+
   // drush reset getcwd, it'll return DRUPAL_ROOT here => file will invaild
   // Set current_dir and build_path to current directory
   $current_dir = $build_path = drush_get_context(DRUSH_OLDCWD);
+
   // Get DrupalRoot context
   $drupal_root = drush_get_context(DRUSH_DRUPAL_ROOT);
   $parser = new Go1RequireParseInfo($make_file, $gitignore);
+
   // Get projects need to build;
   $info = $parser->getInfoContent();
+
   // Prevent download core
   drush_set_option('no-core', 1);
+
   // Begin build
   $make_project_callback = 'make_projects';
   $make_libraries_callback = 'make_libraries';
@@ -26,9 +33,11 @@ function drush_go_require() {
     $make_project_callback = 'drush_make_projects';
     $make_libraries_callback = 'drush_make_libraries';
   }
+
   if ($make_project_callback(FALSE, '', $info, $build_path )) {
     $make_libraries_callback('', $info, $build_path);
   }
+
   return $info;
 }
 
@@ -48,11 +57,18 @@ function drush_go_post_go_require() {
   $make_clean_tmp_callback();
 }
 
-// Class to parse info file
+/**
+ * Class to parse info file.
+ */
 class Go1RequireParseInfo {
-  // Storage make file content
+  /**
+   * Storage make file content
+   */
   protected $make_file;
-  // Store ignore file
+
+  /**
+   * Store ignore file
+   */
   protected $ignore_file;
 
   private $_info;
@@ -63,20 +79,26 @@ class Go1RequireParseInfo {
   private $_current_dir;
   private $_parsed;
 
-  // Contruct, save value
+  /**
+   * Contruct, save value
+   */
   public function __construct($make_file, $ignore_file) {
     $this->make_file = $make_file;
     $this->ignore_file = $ignore_file;
     $this->_parsed = FALSE;
   }
 
-  // Function to get modules list
+  /**
+   * Function to get modules list.
+   */
   public function getProjects() {
     $this->parseInfo();
     return $this->_projects;
   }
 
-  // Function to get libraries list
+  /**
+   * Function to get libraries list.
+   */
   public function getLibraries() {
     $this->parseInfo();
     return $this->_libraries;
@@ -122,7 +144,10 @@ class Go1RequireParseInfo {
       $this->_parsed = TRUE;
     }
   }
-  // Clean project (module + theme) and libraries we have
+
+  /**
+   * Clean project (module + theme) and libraries we have.
+   */
   public function cleanInfoFile() {
     // Get all modules we have
     // Get all know projects
@@ -137,8 +162,10 @@ class Go1RequireParseInfo {
     foreach ($extension_info as $key => $extension) {
       _go_require_clean($this->_info, $key, 'projects');
     }
+
     // Clear memory
     unset($extension_info);
+
     // Get all know libraries
     $libraries = array();
     foreach (array($this->_drupal_root . '/sites/all/libraries', $this->_drupal_root . '/sites/' . $this->_site_root . '/libraries', $this->_current_dir . '/libraries') as $scan_dir) {
@@ -146,10 +173,12 @@ class Go1RequireParseInfo {
         $libraries = array_merge(array_diff(scandir($scan_dir), array('..', '.')), $libraries);
       }
     }
+
     // Check and unset library we have
     foreach ($libraries as $library) {
       _go_require_clean($this->_info, $library, 'libraries');
     }
+
     // Read content from .gitignore file
     if (is_file($this->_current_dir . '/' . $this->ignore_file)) {
       $contents = explode("\n", trim(file_get_contents($this->_current_dir . '/' . $this->ignore_file)));
@@ -161,7 +190,9 @@ class Go1RequireParseInfo {
   }
 }
 
-// Clean library or project from build file
+/**
+ * Clean library or project from build file.
+ */
 function _go_require_clean(&$info, $key, $type) {
   if (isset($info[$type][$key])) {
     unset($info[$type][$key]);
