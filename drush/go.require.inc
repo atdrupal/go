@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * @file ./drush/go.require.inc
+ *
+ * Functions/Classes for drush go-require command.
+ */
+
+/**
+ * Callback for drush go-require command.
+ */
 function drush_go_require() {
   // // Using native drush make function, require drush 5
   // if (version_compare(DRUSH_MAJOR_VERSION, 5) < 0) {
@@ -104,12 +113,17 @@ class Go1RequireParseInfo {
     return $this->_libraries;
   }
 
+  /**
+   * Wrapper method to get parsed info.
+   */
   public function getInfoContent() {
     $this->parseInfo();
     return $this->_info;
   }
 
-  // Parse info file, using native drush make
+  /**
+   * Parse info file, using native drush make.
+   */
   private function parseInfo() {
     // Only continue when we haven't parse file
     if (!$this->_parsed) {
