@@ -10,6 +10,17 @@
 
 /**
  * Callback for drush go-require command.
+ *
+ * Flow:
+ *   - If not found .gorequire in ./sites/example.com/.gorequire, throw exception.
+ *   - If .gorequire is not in valid format, thow exception.
+ *   - Parse to get dependencies — modules/themes/libraries
+ *   - Install dependency:
+ *     - If the resource is already available, no need to download again.
+ *     - If an resource is available with different version to expected,
+ *       - If the alternative directory is available, download dep. there
+ *       - Else, confirm user to override it or not. Allow user go to next dep.
+ *           without resolving issue.
  */
 function drush_go_require() {
   // // Using native drush make function, require drush 5
@@ -45,7 +56,7 @@ function drush_go_require() {
     $make_libraries_callback = 'drush_make_libraries';
   }
 
-  if ($make_project_callback(FALSE, '', $info, $build_path )) {
+  if ($make_project_callback(FALSE, '', $info, $build_path)) {
     $make_libraries_callback('', $info, $build_path);
   }
 
