@@ -4,6 +4,8 @@
  * @file ./drush/go.require.inc
  *
  * Functions/Classes for drush go-require command.
+ *
+ * @author  Sang Le
  */
 
 /**
