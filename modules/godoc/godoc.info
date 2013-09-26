@@ -1,0 +1,7 @@
+name = Go Documentation
+version = 7.x-1.x
+description = Auto generate documentation for Drupal site
+
+dependencies[] = go
+
+package = Go1

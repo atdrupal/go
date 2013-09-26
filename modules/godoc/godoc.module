@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_permission()
+ */
+function godoc_permission() {
+  $items['godoc access'] = array(
+    'title' => 'Acccess Go Documentation',
+    'description' => '',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu()
+ */
+function godoc_menu() {
+  $items['admin/go-doc'] = array(
+    'title' => 'Go Documentation',
+    'access arguments' => array('godoc access'),
+    'page callback' => 'Drupal\godoc\Controller\GoDoc::pageCallback',
+  );
+
+  return $items;
+}
