@@ -81,3 +81,23 @@ function go_cache($options, $callback, $arguments = array()) {
 
   return $return;
 }
+
+/**
+ * Identity function, returns its argument unmodified.
+ *
+ * This is useful almost exclusively as a workaround to an oddity in the PHP
+ * grammar -- this is a syntax error:
+ *
+ *    COUNTEREXAMPLE
+ *    new Thing()->doStuff();
+ *
+ * ...but this works fine:
+ *
+ *    id(new Thing())->doStuff();
+ *
+ * @param   wild Anything.
+ * @return  wild Unmodified argument.
+ */
+function go_id($x) {
+  return $x;
+}
