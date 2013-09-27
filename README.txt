@@ -128,6 +128,7 @@ No more needed modules:
   - login_redirect
   - google_analytics
   - better format
+  - nocurrent_pass
 
 Comming features:
 
