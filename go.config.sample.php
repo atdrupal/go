@@ -30,6 +30,11 @@ define('GO_404', 'search/content');
 define('GO_SKIP_NODE_TO_FRONT', 1);
 
 // #####################
+// No current password
+// #####################
+define('GO_NO_CURRENT_PASSWORD', TRUE);
+
+// #####################
 // Disable mail sending
 //
 // @see drupal_mail()

@@ -109,6 +109,20 @@ Features
 
   Read sample configure in go.config.sample.php
 
+10. No current password
+
+  Drupal 7 added a new feature: If a user changes their email or password, they
+  are required to enter their current password. (see the 5+ year old
+  issue: http://drupal.org/node/86711)
+
+  However, the implementation causes problems for certain edge cases. (For
+  example, http://drupal.org/node/889772) Or, you may just not like the design
+  decision. Either way, this module makes it optional.
+
+  To disable this default bahavior, in settings.php add this line:
+
+    define('GO_NO_CURRENT_PASSWORD', TRUE);
+
 No more needed modules:
 
   - login_redirect
