@@ -75,6 +75,12 @@ function go_drush_get_supported_libraries() {
         'default' => array('url' => 'http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip')
       ),
     ),
+    'jquery.cycle.2' => array(
+      'name' => 'jQuery cycle',
+      'versions' => array(
+        'default' => array('url' => 'http://malsup.github.io/min/jquery.cycle2.min.js'),
+      ),
+    ),
     'jquery.cycle' => array(
       'name' => 'jQuery cycle',
       'versions' => array(

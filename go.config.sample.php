@@ -16,6 +16,18 @@ define('GO_DISABLE_AUTOLOAD', TRUE);
 define('GO_GOOGLE_ANALYTICS', 'UA-12345');
 
 // #####################
+// Simple slideshow
+//
+// More example at ./docs/slideshow.txt
+// ####################
+$conf['go_slideshow__views__frontpage_slider__page'] = array(
+  'slideExpr' => '.views-row',
+  'pager' => 'after',
+  'pagerExpr' => '.views-field-field-image',
+  'activePagerClass' => 'pager-current',
+);
+
+// #####################
 // Simple 403/404
 //
 //  403 => Redirect to Login page
@@ -28,11 +40,6 @@ define('GO_404', 'search/content');
 // Keep /node page, do not redirect to front page
 // #####################
 define('GO_SKIP_NODE_TO_FRONT', 1);
-
-// #####################
-// No current password
-// #####################
-define('GO_NO_CURRENT_PASSWORD', TRUE);
 
 // #####################
 // Disable mail sending

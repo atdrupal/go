@@ -58,3 +58,16 @@ function nocurrent_pass_form_user_profile_form_alter(&$form, &$form_state) {
     $form['account']['current_pass']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_view_pre_render().
+ */
+function go_views_pre_render(&$view) {
+  $view_id = "{$view->name}__{$view->current_display}";
+  $slideshow_id = "go_slideshow__views__{$view_id}";
+  $slideshow_config = variable_get($slideshow_id);
+  if (!is_null($slideshow_config)) {
+    module_load_include('inc', 'go', 'includes/go.slideshow');
+    go_views_pre_render__slideshow($view->name, $view->current_display, $slideshow_config);
+  }
+}

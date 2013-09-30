@@ -38,6 +38,7 @@ Features
   # Download libraries
   drush godl ckeditor
   drush godl jquery.cycle
+  drush godl jquery.cycle.2
   drush godl colorbox
   drush godl maxmind.geolite.country
   drush godl maxmind.geolite.country ipv6
@@ -122,6 +123,12 @@ Features
   To disable this default bahavior, in settings.php add this line:
 
     define('GO_NO_CURRENT_PASSWORD', TRUE);
+
+11. Simple slider/slideshow
+
+  People usually using views + views slideshow + views slideshow cycle (even more)
+  modules to just render the modules. But with help many jquery libraries out
+  there, rendering a slideshow is not hard like that. Read more at go.config.sample.php
 
 No more needed modules:
 
