@@ -114,14 +114,10 @@ function go_drush_command() {
 
   $items['go-require'] = array(
     'description' => 'Download dependencies for Drupal — modules/themes/libraries/…',
-    'options' => array(
-      'file' => 'Required resource, default is .gorequire'
-    ),
     'examples' => array(
-      'drush go-require' => 'Download all missing resource from .gorequire file',
-      'drush go-require --file=.gorequire2' => 'Download all missing resource from .gorequire2 file',
+      'drush go-require' => 'Make sure all dependencies are downloaded.',
     ),
-    'aliases' => array('gorequire'),
+    'aliases' => array('gorequire', 'gor'),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
     'engines' => array('release_info'),
   );
