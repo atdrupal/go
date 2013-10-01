@@ -38,6 +38,7 @@ Features
   # Download libraries
   drush godl ckeditor
   drush godl jquery.cycle
+  drush godl jquery.cycle.2
   drush godl colorbox
   drush godl maxmind.geolite.country
   drush godl maxmind.geolite.country ipv6
@@ -109,11 +110,32 @@ Features
 
   Read sample configure in go.config.sample.php
 
+10. No current password
+
+  Drupal 7 added a new feature: If a user changes their email or password, they
+  are required to enter their current password. (see the 5+ year old
+  issue: http://drupal.org/node/86711)
+
+  However, the implementation causes problems for certain edge cases. (For
+  example, http://drupal.org/node/889772) Or, you may just not like the design
+  decision. Either way, this module makes it optional.
+
+  To disable this default bahavior, in settings.php add this line:
+
+    define('GO_NO_CURRENT_PASSWORD', TRUE);
+
+11. Simple slider/slideshow
+
+  People usually using views + views slideshow + views slideshow cycle (even more)
+  modules to just render the modules. But with help many jquery libraries out
+  there, rendering a slideshow is not hard like that. Read more at go.config.sample.php
+
 No more needed modules:
 
   - login_redirect
   - google_analytics
   - better format
+  - nocurrent_pass
 
 Comming features:
 
