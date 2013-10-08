@@ -130,6 +130,25 @@ Features
   modules to just render the modules. But with help many jquery libraries out
   there, rendering a slideshow is not hard like that. Read more at go.config.sample.php
 
+12. drush go-require
+
+  Drush make is the best way to make our Drupal code base. But if we would like
+  make our code base on an existing Drupal core, Drush make can not help, that's
+  why we wrote this command.
+
+  On your dev site, use drush make generate to generate the .go_require file
+
+    $ # change directory to your Drupal dir, where you place settings.php
+    $ cd /path/to/your-drupal/
+    $ drush make-generate > .go_require
+    $ git add .go_require
+    $ git commit .go_require -m "Define make file for go-require command"
+
+  On your production site, if .go_required are already there, just run simple
+  command:
+
+    $ drush go-require
+
 No more needed modules:
 
   - login_redirect
