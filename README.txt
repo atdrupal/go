@@ -130,6 +130,8 @@ Features
   modules to just render the modules. But with help many jquery libraries out
   there, rendering a slideshow is not hard like that. Read more at go.config.sample.php
 
+12. Provide linnks to run specific cron job at /admin/config/system/cron
+
 No more needed modules:
 
   - login_redirect

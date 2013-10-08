@@ -3,6 +3,8 @@
  * @file includes/go.hooks.inc
  */
 
+require_once dirname(__FILE__) . '/go.hooks.form.inc';
+
 /**
  * Implements hook_init().
  */
