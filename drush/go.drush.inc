@@ -14,7 +14,7 @@ require_once dirname(__FILE__) . '/go.mail.inc';
 
 if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
   require_once dirname(__FILE__) . '/go.download.inc';
-  // require_once dirname(__FILE__) . '/go.require.inc';
+  require_once dirname(__FILE__) . '/go.require.inc';
 }
 
 /**
@@ -128,19 +128,15 @@ function go_drush_command() {
       'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
     );
 
-    // $items['go-require'] = array(
-    //   'description' => dt('Go download require resource'),
-    //   'options' => array(
-    //     'file' => dt('required resource, default is .gorequire')
-    //   ),
-    //   'examples' => array(
-    //     'drush go-require' => dt('Download all missing resource from .gorequire file'),
-    //     'drush go-require --file=.gorequire2' => dt('Download all missing resource from .gorequire2 file'),
-    //   ),
-    //   'aliases' => array('gorequire'),
-    //   'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
-    //   'engines' => array('release_info'),
-    // );
+    $items['go-require'] = array(
+      'description' => 'Download dependencies for Drupal — modules/themes/libraries/…',
+      'examples' => array(
+        'drush go-require' => 'Make sure all dependencies are downloaded.',
+      ),
+      'aliases' => array('gorequire', 'gor'),
+      'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+      'engines' => array('release_info'),
+    );
   }
 
   return $items;
