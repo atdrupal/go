@@ -7,6 +7,16 @@
  * Implements hook_form_FORM_ID_alter().
  */
 function go_form_system_cron_settings_alter(&$form, $form_state) {
+  if (!empty($_GET['module'])) {
+    if (module_exists($_GET['module'])) {
+      timer_start('go_cron_links');
+      call_user_func("{$_GET['module']}_cron");
+      $time = timer_read('go_cron_links');
+      drupal_set_message("Ran time: {$time} ms");
+      drupal_goto('admin/config/system/cron');
+    }
+  }
+
   foreach (module_implements('cron') as $module) {
     $items[] = l($module, 'admin/config/system/cron', array('query' => array('module' => $module)));
   }
@@ -19,10 +29,4 @@ function go_form_system_cron_settings_alter(&$form, $form_state) {
       '#items' => $items,
     )
   );
-
-  if (!empty($_GET['module'])) {
-    if (module_exists($_GET['module'])) {
-      call_user_func("{$_GET['module']}_cron");
-    }
-  }
 }
