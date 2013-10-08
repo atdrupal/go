@@ -37,6 +37,9 @@ function drush_go_dev() {
     'environment_indicator_position' => 'left',
   ));
 
+  $command = $commands['role-add-perm'];
+  _drush_invoke_hooks($command, array('anonymous user', 'access environment indicator'));
+
   // #####################
   // Dev options
   // #####################
