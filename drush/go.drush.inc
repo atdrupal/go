@@ -6,6 +6,7 @@
  */
 
 require_once dirname(__FILE__) . '/../includes/go.autoload.inc';
+require_once dirname(__FILE__) . '/go.cron.inc';
 require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
@@ -35,6 +36,17 @@ function go_drush_command() {
     'examples' => array(
       'drush gohc p.GoCMS "Hello room!"' => 'Send "Hello room!" to p.GoCMS chatroom.',
       'drush gohc Go1 "Log time please guys!" --from="Daniel Freshwater" --notify=1' => 'Freshy notify all people in Go1 room to log time.',
+    ),
+  );
+
+  $items['go-cron'] = array(
+    'description' => 'Run specific cron job',
+    'arguments' => array(
+      'module' => 'Machine name of the module.',
+    ),
+    'aliases' => array('goc'),
+    'examples' => array(
+      'drush goc system' => 'Fire system_cron() function.',
     ),
   );
 
