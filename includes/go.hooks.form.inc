@@ -10,9 +10,10 @@ function go_form_system_cron_settings_alter(&$form, $form_state) {
   if (!empty($_GET['module'])) {
     if (module_exists($_GET['module'])) {
       timer_start('go_cron_links');
-      call_user_func("{$_GET['module']}_cron");
+      $function = "{$_GET['module']}_cron";
+      $function();
       $time = timer_read('go_cron_links');
-      drupal_set_message("Ran time: {$time} ms");
+      drupal_set_message("Ran <strong>{$function}()</strong> in {$time} ms");
       drupal_goto('admin/config/system/cron');
     }
   }
