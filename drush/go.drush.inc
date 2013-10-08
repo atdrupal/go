@@ -6,12 +6,15 @@
  */
 
 require_once dirname(__FILE__) . '/../includes/go.autoload.inc';
-require_once dirname(__FILE__) . '/go.download.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
 require_once dirname(__FILE__) . '/go.live.inc';
 require_once dirname(__FILE__) . '/go.mail.inc';
-require_once dirname(__FILE__) . '/go.require.inc';
+
+if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
+  require_once dirname(__FILE__) . '/go.download.inc';
+  require_once dirname(__FILE__) . '/go.require.inc';
+}
 
 /**
  * Implements hook_drush_command()
@@ -36,25 +39,6 @@ function go_drush_command() {
       'drush gohc p.GoCMS "Hello room!"' => 'Send "Hello room!" to p.GoCMS chatroom.',
       'drush gohc Go1 "Log time please guys!" --from="Daniel Freshwater" --notify=1' => 'Freshy notify all people in Go1 room to log time.',
     ),
-  );
-
-  $items['go-download'] = array(
-    'description' => 'Command to download libraries for you Drupal',
-    'arguments' => array(
-      'library' => 'Name of library to be downloaded.',
-    ),
-    'options' => array(
-      'list' => 'List all supported libraries',
-      'destination' => 'Directory you would like to download the library to.',
-      'working-copy' => 'Preserves VCS directories, like .git, for projects downloaded using such methods.',
-    ),
-    'examples' => array(
-      'drush godl --list' => 'List supported libraries.',
-      'drush godl jquery.cycle' => 'Download the jquery.cycle library.',
-    ),
-    'aliases' => array('godl'),
-    // No bootstrap is needed
-    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
   );
 
   $items['go-dev'] = array(
@@ -112,15 +96,36 @@ function go_drush_command() {
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
   );
 
-  $items['go-require'] = array(
-    'description' => 'Download dependencies for Drupal — modules/themes/libraries/…',
-    'examples' => array(
-      'drush go-require' => 'Make sure all dependencies are downloaded.',
-    ),
-    'aliases' => array('gorequire', 'gor'),
-    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
-    'engines' => array('release_info'),
-  );
+  if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
+    $items['go-download'] = array(
+      'description' => 'Command to download libraries for you Drupal',
+      'arguments' => array(
+        'library' => 'Name of library to be downloaded.',
+      ),
+      'options' => array(
+        'list' => 'List all supported libraries',
+        'destination' => 'Directory you would like to download the library to.',
+        'working-copy' => 'Preserves VCS directories, like .git, for projects downloaded using such methods.',
+      ),
+      'examples' => array(
+        'drush godl --list' => 'List supported libraries.',
+        'drush godl jquery.cycle' => 'Download the jquery.cycle library.',
+      ),
+      'aliases' => array('godl'),
+      // No bootstrap is needed
+      'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+    );
+
+    $items['go-require'] = array(
+      'description' => 'Download dependencies for Drupal — modules/themes/libraries/…',
+      'examples' => array(
+        'drush go-require' => 'Make sure all dependencies are downloaded.',
+      ),
+      'aliases' => array('gorequire', 'gor'),
+      'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+      'engines' => array('release_info'),
+    );
+  }
 
   return $items;
 }
