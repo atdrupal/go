@@ -15,20 +15,23 @@ function drush_go_dev() {
     return drush_set_error('godev command\'s not available in current site.');
   }
 
+  $commands = drush_get_commands();
+
   // #####################
   // Core modules
   // #####################
   $modules['update'] = 0;
   foreach ($modules as $module => $default_value) {
     $value = drush_get_option($module, $default_value);
-    $command = $value ? 'pm-enable' : 'pm-disable';
-    _drush_invoke_hooks($command, array($module));
+    $command = $commands[$value ? 'pm-enable' : 'pm-disable'];
+    drush_dispatch($command, array($module));
   }
 
   // #####################
   // Contrib modules
   // #####################
   drush_go_dev__module('devel', 1);
+
   drush_go_dev__module('environment_indicator', 1, '7.x-1.1', array(
     'environment_indicator_text' => 'DEVELOPMENT ENVIRONMENT',
     'environment_indicator_position' => 'left',
@@ -60,11 +63,11 @@ function drush_go_dev() {
  * @param  array   $options
  */
 function drush_go_dev__module($module, $default_install = TRUE, $version = NULL, $options = array()) {
-  $action = drush_get_option($options, $default_install) ? 'pm-enable' : 'pm-disable';
+  $commands = drush_get_commands();
 
+  $action = drush_get_option($options, $default_install) ? 'pm-enable' : 'pm-disable';
   if ($action === 'pm-enable') {
     if (!module_exists($module)) {
-      $commands = drush_get_commands();
       $cmd = $commands['pm-download'];
 
       $release = !empty($version) ? "{$module}-{$version}" : $module;
@@ -83,5 +86,6 @@ function drush_go_dev__module($module, $default_install = TRUE, $version = NULL,
     }
   }
 
-  _drush_invoke_hooks($action, array($module));
+  $cmd = $commands[$action];
+  _drush_invoke_hooks($cmd, array($module));
 }
