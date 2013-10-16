@@ -106,8 +106,9 @@ function _go_autoload_get_file($class, $base_dirs) {
   // #####################
   $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
   $path = DRUPAL_ROOT . "/%s/lib/{$path}.php";
+
   foreach (go_get_module_apis() as $module => $info) {
-    if (strpos($suffix, "Drupal/{$module}/") !== FALSE) {
+    if (strpos($path, "Drupal/{$module}/") !== FALSE) {
       $file = sprintf($path, drupal_get_path('module', $module));
       if (file_exists($file)) {
         return $file;
