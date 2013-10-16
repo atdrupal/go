@@ -57,6 +57,7 @@ function _go_autoload($class, $base_dirs) {
  * Get autoloading file.
  *
  * @param  string $class
+ * @see    go_flush_caches()
  */
 function go_autoload_get_file($class, $base_dirs, $reset = FALSE) {
   $apc = function_exists('apc_store');

@@ -73,3 +73,14 @@ function go_views_pre_render(&$view) {
     go_views_pre_render__slideshow($view->name, $view->current_display, $slideshow_config);
   }
 }
+
+/**
+ * Implements hook_flush_caches()
+ *
+ * @see go_autoload_get_file()
+ */
+function go_flush_caches() {
+  if (function_exists('apc_clear_cache')) {
+    apc_clear_cache('user');
+  }
+}
