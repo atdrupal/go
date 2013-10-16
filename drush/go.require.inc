@@ -21,6 +21,24 @@
 
 use Drupal\go\Drush\Command\GoRequire\ParseInfo;
 
+function go_drush_require_command_info() {
+  $items = array();
+
+  if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
+    $items['go-require'] = array(
+      'description' => 'Download dependencies for Drupal — modules/themes/libraries/…',
+      'examples' => array(
+        'drush go-require' => 'Make sure all dependencies are downloaded.',
+      ),
+      'aliases' => array('gorequire', 'gor'),
+      'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+      'engines' => array('release_info'),
+    );
+  }
+
+  return $items;
+}
+
 /**
  * Callback for drush go-require command.
  *

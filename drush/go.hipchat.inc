@@ -6,6 +6,28 @@
  * @author Andy Truong
  */
 
+function go_drush_hipchat_command_info() {
+  $items['go-hipchat'] = array(
+    'description' => 'Send message to Hipchat room.',
+    'arguments' => array(
+      'room_id' => 'ID of the chatroom.',
+      'message' => 'Message to be sent to the room.',
+    ),
+    'options' => array(
+      'from' => 'Sender name, default: Go Module',
+      'token' => 'API Token, default: value of GO_HIPCHAT_API_TOKEN constant',
+      'color' => 'Background color for the message (yellow, red, green, purple or random - default: yellow)',
+      'notify' => 'Trigger notification for people in the room, default: 0',
+    ),
+    'aliases' => array('gohc'),
+    'examples' => array(
+      'drush gohc p.GoCMS "Hello room!"' => 'Send "Hello room!" to p.GoCMS chatroom.',
+      'drush gohc Go1 "Log time please guys!" --from="Daniel Freshwater" --notify=1' => 'Freshy notify all people in Go1 room to log time.',
+    ),
+  );
+  return $items;
+}
+
 /**
  * Callback function to send a message to Hipchat room.
  *

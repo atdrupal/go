@@ -9,6 +9,24 @@
  * @author Quyen Bui
  */
 
+function go_drush_mail_command_info() {
+  $items['go-mail'] = array(
+    'description' => dt('Command to sent email.'),
+    'options' => array(
+      'subject' => dt('Mail subject'),
+      'body' => dt('Mail body'),
+      'from' => dt('Mail sender'),
+      'to' => dt('Mail receiver'),
+    ),
+    'examples' => array(
+      'drush gomail --subject="Test email" --body="Test content" --from=admin@example.com --to=tester@example.com' => 'Enable devel module.',
+    ),
+    'aliases' => array('gomail'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH,
+  );
+  return $items;
+}
+
 /**
  * Command to send mail.
  */

@@ -6,6 +6,26 @@
  * @author Quyen Bui
  */
 
+function go_drush_live_command_info() {
+  $items['go-live'] = array(
+    'description' => dt('Command to enable page/block caching and js/css aggregation Simultaneous Disable UI modules enable module Update!'),
+    'option' => array(
+      'cache'  => '0 to disable site caching. Default: 1',
+      'js'     => '0 to disable JS aggregation. Default: 1',
+      'css'    => '0 to disable CSS aggregation. Default: 1',
+      'dev'    => '1 to enable devel module. Default: 0',
+      'update' => '0 to disable update.module. Default: 1',
+    ),
+    'examples' => array(
+      'drush golive --cache=1 --js=1 --update=1',
+      'description' => "--cache=1 if enable page/block caching or --cache=0 not enable \n\r--js=1 if enable js/css aggregation --js=0 to vice versa \n\r--update=1 if enable module update or --update=0 if not enable \n\rNotes: Do not use option will to the default value is 1",
+    ),
+    'aliases' => array('golive'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+  );
+  return $items;
+}
+
 /**
  * Drush callback function.
  */

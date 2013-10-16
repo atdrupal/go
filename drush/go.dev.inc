@@ -6,6 +6,32 @@
  * @author Chau Pham, Andy Truong
  */
 
+function go_drush_dev_command_info() {
+  $items['go-dev'] = array(
+    'description' => dt('Special drush commands, provided by Go1, execute some dev configurations.'),
+    'options' => array(
+      'devel'                 => '0 to disable devel.module. Default: 1',
+      'environment_indicator' => '0 to disable environment_indicator.module. Default: 1',
+      'update'                => '1 to enable update.module. Default: 0',
+      'page_cache'            => 'Enable or disable page caching, default = 0',
+      'block_cache'           => 'Enable or disable block caching, default = 0',
+      'compress_js'           => 'Enable or disable js aggregation, default = 0',
+      'compress_css'          => 'Enable or disable js aggregation, default = 0',
+      'views-preview'         => 'Enable or disable "Automatically update preview on changes", default = 0',
+      'views-sql'             => 'Enable or disable "Show the SQL query", default = 1',
+      'views-queries'         => 'Enable or disable "Show other queries run during render during live preview", default = 1',
+      'views-help'            => 'Enable or disable "Show advanced help warning", default = 0',
+    ),
+    'examples' => array(
+      'drush godev --devel' => 'Enable devel module.',
+      'drush godev --devel=0' => 'Disable devel module.',
+    ),
+    'aliases' => array('godev'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+  );
+  return $items;
+}
+
 /**
  * Command to enable dev environment.
  */

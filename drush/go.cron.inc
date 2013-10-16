@@ -1,5 +1,19 @@
 <?php
 
+function go_drush_cron_command_info() {
+  $items['go-cron'] = array(
+    'description' => 'Run specific cron job',
+    'arguments' => array(
+      'module' => 'Machine name of the module.',
+    ),
+    'aliases' => array('goc'),
+    'examples' => array(
+      'drush goc system' => 'Fire system_cron() function.',
+    ),
+  );
+  return $items;
+}
+
 /**
  * Callback function to send a message to Hipchat room.
  *
