@@ -46,7 +46,7 @@ if (!defined('GO_DISABLE_AUTOLOAD')) {
  *
  * @return array
  */
-function go_get_module_apis($reset = FALSE) {
+function go_get_module_apis($reset = FALSE, $api = 'go') {
   if ($reset) {
     $cache = &drupal_static('ctools_plugin_api_info');
     if (isset($cache['go'][$api])) {
@@ -58,6 +58,15 @@ function go_get_module_apis($reset = FALSE) {
   $return = ctools_plugin_api_info('go', $api, '1.0', '1.0');
 
   return $return;
+}
+
+/**
+ * Implements %owner_ctools_plugin_api_hook_name().
+ *
+ * @see  ctools_plugin_api_get_hook()
+ */
+function go_ctools_plugin_api_hook_name() {
+  return 'go_api';
 }
 
 /**
