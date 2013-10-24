@@ -11,7 +11,6 @@
  * Authors:
  *
  *   - Auto loader: Andy Truong
- *   - go_cache(): Andy Truong
  *   - Better formats: Nguyen Tran, Andy Truong
  *   - Google Analytics: Quyen, Andy Truong
  *   - 403/404 handler: Thai Nguyen
@@ -39,25 +38,6 @@ require_once dirname(__FILE__) . '/includes/go.hooks.inc';
  */
 if (!defined('GO_DISABLE_AUTOLOAD')) {
   require_once dirname(__FILE__) . '/includes/go.autoload.inc';
-}
-
-/**
- * Get modules that implements Go API.
- *
- * @return array
- */
-function go_get_module_apis($reset = FALSE, $api = 'go') {
-  if ($reset) {
-    $cache = &drupal_static('ctools_plugin_api_info');
-    if (isset($cache['go'][$api])) {
-      unset($cache['go'][$api]);
-    }
-  }
-
-  ctools_include('plugins');
-  $return = ctools_plugin_api_info('go', $api, '1.0', '1.0');
-
-  return $return;
 }
 
 /**
