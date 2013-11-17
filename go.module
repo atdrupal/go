@@ -9,19 +9,42 @@
  * @author Nguyen Tran
  *
  * Authors:
- *
  *   - Auto loader: Andy Truong
  *   - Better formats: Nguyen Tran, Andy Truong
  *   - Google Analytics: Quyen, Andy Truong
  *   - 403/404 handler: Thai Nguyen
- *
  */
 
 /**
- * Store hooks in seprate file to make it's easier to see what hooks implemented
- * in this module.
+ * Implements hook_init().
  */
-require_once dirname(__FILE__) . '/includes/go.hooks.inc';
+function go_init() {
+  at_id(new \Drupal\go\Hook\Init())->execute();
+}
+
+/**
+ * Implements of hook_element_info_alter().
+ */
+function go_element_info_alter(&$type) {
+  if (go_enabled('go_google_analytics')) {
+    at_id(new \Drupal\go\Hook\ElementInfoAlter())->alter($type);
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ * Simple 403/404 handlers
+ */
+function go_preprocess_page() {
+  at_id(new \Drupal\go\Misc\SEO\Page40x())->execute();
+}
+
+/**
+ * Implements hook_view_pre_render().
+ */
+function go_views_pre_render(&$view) {
+  at_id(new \Drupal\go\Hook\Views\PreRender($view))->execute();
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
