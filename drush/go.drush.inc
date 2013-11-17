@@ -14,7 +14,6 @@ require_once dirname(__FILE__) . '/go.mail.inc';
 
 if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
   require_once dirname(__FILE__) . '/go.download.inc';
-  require_once dirname(__FILE__) . '/go.require.inc';
 }
 
 /**
@@ -31,7 +30,6 @@ function go_drush_command() {
 
   if (version_compare(DRUSH_MAJOR_VERSION, 5) >= 0) {
     $items += go_drush_download_command_info();
-    $items += go_drush_require_command_info();
   }
 
   return $items;
