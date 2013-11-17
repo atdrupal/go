@@ -1,0 +1,53 @@
+Developer Experience
+---
+
+1. Useful drush commands:
+
+  # Download libraries
+  drush godl ckeditor
+  drush godl jquery.cycle
+  drush godl jquery.cycle.2
+  drush godl colorbox
+  drush godl maxmind.geolite.country
+  drush godl maxmind.geolite.country ipv6
+  drush godl maxmind.geolite.city
+  drush godl maxmind.geolite.city ipv6
+
+  drush godev
+    Shortcut for quick dev enviroments.
+
+  drush golive --cache=1 --js=1 --update=1
+
+    This is wrapper command for useful auto configuration for live site:
+      - Enable page/block caching
+      - Enable js/css aggregation
+      - Disable UI modules (context, views, rules, …)
+      - Enable update.module
+      - drush help golive for more informations.
+
+  Send message to Hipchat room:
+
+    $ drush go-hipchat room_id 'Message to be sent…'
+
+  Send e-mail:
+
+    $ drush gomail \
+        --body="message content" \
+        --subject="Subject for this mail" \
+        --to="to@mail.com" \
+        --from="mailfrom@mail.com"
+
+2. Created new golive command
+
+   Used command: drush golive --cache=1 --js=1 --update=1
+   Please run command drush golive --help for help
+
+3. Simple slider/slideshow
+
+  People usually using views + views slideshow + views slideshow cycle (even more)
+  modules to just render the modules. But with help many jquery libraries out
+  there, rendering a slideshow is not hard like that. Read more at go.config.sample.php
+
+4. Provide links to run specific cron job at /admin/config/system/cron.
+    There's also drush for this:
+      drush go-cron %module
