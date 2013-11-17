@@ -26,7 +26,7 @@ function go_init() {
  * Implements of hook_element_info_alter().
  */
 function go_element_info_alter(&$type) {
-  if (go_enabled('go_google_analytics')) {
+  if (at_valid('go_google_analytics')) {
     at_id(new \Drupal\go\Hook\ElementInfoAlter())->alter($type);
   }
 }

@@ -4,7 +4,7 @@ namespace Drupal\go\Hook\FormAlter;
 class SystemCronSettings {
   public function __construct() {
     if (!empty($_GET['module'])) {
-      $this->runCronTask($module);
+      $this->runCronTask($_GET['module']);
     }
   }
 

@@ -1,5 +1,5 @@
 <?php
-namespace \Drupal\go\Misc\SEO;
+namespace Drupal\go\Misc\SEO;
 
 /**
  * Simple 403/404 handler
