@@ -1,6 +1,6 @@
-name = Go Module
+name = GO Module
 version = 7.x-1.x
-description = GO Tools
+description = "A Drupal module for quick web agency projects"
 
 dependencies[] = at_base
 dependencies[] = at_autoload
