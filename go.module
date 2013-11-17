@@ -17,8 +17,6 @@
  *
  */
 
-require_once dirname(__FILE__) . '/includes/go.inc';
-
 /**
  * Store hooks in seprate file to make it's easier to see what hooks implemented
  * in this module.
