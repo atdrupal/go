@@ -5,7 +5,6 @@
  *   Go Drush commands
  */
 
-require_once dirname(__FILE__) . '/../includes/go.autoload.inc';
 require_once dirname(__FILE__) . '/go.cron.inc';
 require_once dirname(__FILE__) . '/go.hipchat.inc';
 require_once dirname(__FILE__) . '/go.dev.inc';
