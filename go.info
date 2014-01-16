@@ -12,8 +12,10 @@ dependencies[] = views
 dependencies[] = libraries
 
 ; Admin
+dependencies[] = ckeditor
 dependencies[] = features
 dependencies[] = navbar
+dependencies[] = field_group
 
 ; SEO
 dependencies[] = metatag
