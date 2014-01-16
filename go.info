@@ -3,7 +3,6 @@ version = 7.x-1.x
 description = "A Drupal module for quick web agency projects"
 
 dependencies[] = at_base
-dependencies[] = at_autoload
 
 package = GO1
 core = 7.x
