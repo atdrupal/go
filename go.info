@@ -24,8 +24,9 @@ dependencies[] = context
 dependencies[] = contextual
 dependencies[] = ckeditor
 dependencies[] = features
-dependencies[] = navbar
 dependencies[] = field_group
+dependencies[] = navbar
+dependencies[] = strongarm
 
 ; SEO
 dependencies[] = metatag
