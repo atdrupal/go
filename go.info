@@ -14,8 +14,11 @@ dependencies[] = entity
 dependencies[] = views
 dependencies[] = libraries
 
-; Admin
+; Entity & Data
 dependencies[] = bean
+dependencies[] = field_group
+
+; Admin
 dependencies[] = context
 dependencies[] = contextual
 dependencies[] = ckeditor
