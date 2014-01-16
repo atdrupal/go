@@ -1,12 +1,4 @@
 projects:
-  navbar:
-    type: module
-    version: '7.x-1.3'
-
-  libraries:
-    type: module
-    version: '7.x-2.1'
-
   jquery.cycle:
     type: library
     download:
