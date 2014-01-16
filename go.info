@@ -16,6 +16,7 @@ dependencies[] = libraries
 
 ; Admin
 dependencies[] = bean
+dependencies[] = context
 dependencies[] = ckeditor
 dependencies[] = features
 dependencies[] = navbar
