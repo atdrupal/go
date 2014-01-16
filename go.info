@@ -2,9 +2,25 @@ name = GO Module
 version = 7.x-1.x
 description = "A Drupal module for quick web agency projects"
 
+; API
 dependencies[] = at_base
-dependencies[] = navbar
+dependencies[] = ctools
+dependencies[] = entity
+
+; Sub framework
+dependencies[] = views
 dependencies[] = libraries
+
+; Admin
+dependencies[] = features
+dependencies[] = navbar
+
+; SEO
+dependencies[] = metatag
+dependencies[] = metatag_opengraph
+dependencies[] = xmlsitemap
+dependencies[] = xmlsitemap_custom
+dependencies[] = xmlsitemap_node
 
 package = GO1
 core = 7.x
