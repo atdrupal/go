@@ -9,6 +9,7 @@ core = 7.x
 dependencies[] = at_base
 dependencies[] = ctools
 dependencies[] = entity
+dependencies[] = token
 
 ; Sub framework
 dependencies[] = views
@@ -29,6 +30,7 @@ dependencies[] = field_group
 ; SEO
 dependencies[] = metatag
 dependencies[] = metatag_opengraph
+dependencies[] = pathauto
 dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_custom
 dependencies[] = xmlsitemap_node
