@@ -2,6 +2,9 @@ name = GO Module
 version = 7.x-1.x
 description = "A Drupal module for quick web agency projects"
 
+package = GO1
+core = 7.x
+
 ; API
 dependencies[] = at_base
 dependencies[] = ctools
@@ -12,6 +15,7 @@ dependencies[] = views
 dependencies[] = libraries
 
 ; Admin
+dependencies[] = bean
 dependencies[] = ckeditor
 dependencies[] = features
 dependencies[] = navbar
@@ -24,9 +28,11 @@ dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_custom
 dependencies[] = xmlsitemap_node
 
-package = GO1
-core = 7.x
+; Performance 
+dependencies[] = entitycache
 
+; Tests
+; @todo use PSR-0 Testcases
 files[] = tests/go.base.test
 files[] = tests/go.drush.mail.test
 files[] = tests/go.google-analytics.test
