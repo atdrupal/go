@@ -4,3 +4,33 @@ projects:
     download:
       type: file
       url: http://malsup.github.io/min/jquery.cycle.all.min.js
+
+  backbone:
+    type: library
+    download:
+      type: file
+      url: https://github.com/jashkenas/backbone/archive/1.1.0.tar.gz
+
+  ckeditor:
+    type: library
+    download:
+      type: file
+      url: http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.3.1/ckeditor_4.3.1_standard.zip
+
+  json2:
+    type: library
+    download:
+      type: file
+      url: https://github.com/douglascrockford/JSON-js/archive/master.zip
+
+  modernizr:
+    type: library
+    download:
+      type: file
+      url: https://github.com/Modernizr/Modernizr/archive/v2.7.1.tar.gz
+
+  underscore:
+    type: library
+    download:
+      type: file
+      url: https://github.com/jashkenas/underscore/archive/1.5.2.tar.gz
