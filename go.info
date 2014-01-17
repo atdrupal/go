@@ -31,6 +31,7 @@ dependencies[] = strongarm
 ; SEO
 dependencies[] = metatag
 dependencies[] = metatag_opengraph
+dependencies[] = globalredirect
 dependencies[] = pathauto
 dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_custom
